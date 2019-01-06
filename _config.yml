@@ -1,3 +1,5 @@
 theme: screw-themes-i-am-not-using-them
 title: Frame of 42yeah 
 sidebar: false
+comments: true
+layout: default

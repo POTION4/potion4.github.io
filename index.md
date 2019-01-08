@@ -23,7 +23,7 @@
 
 ## 友情
 
-以下的链接包括了友情链接和父子链接:
+以下的链接包括了友情链接链接:
 
 <div style="display: flex; justify-items: between; align-items: center; overflow-x: auto;">
   <a href="https://zzkdev.github.io">

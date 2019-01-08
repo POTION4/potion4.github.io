@@ -10,9 +10,11 @@ You traveled far and deep to my personal blog that I never spread. You are in lu
 
 我大概会在晚上才更新。以下是最新的推：
 
-{% for post in site.posts limit:3 %}
-  <div style="float: left; width: 15%; padding: 0px px 0px 5px; margin: 10px; border-color: black; border-style: solid; border-width: 1px;">
-    <h2>{{ post.title }}</h2>
-    <p>{{ post.excerpt }}</p>
-  </div>
-{% endfor %} 
+<div>
+  {% for post in site.posts limit:3 %}
+    <div style="float: left; width: 15%; padding: 0px px 0px 5px; margin: 10px; border-color: black; border-style: solid; border-width: 1px;">
+      <h2>{{ post.title }}</h2>
+      <small>{{ post.excerpt }}</small>
+    </div>
+  {% endfor %} 
+</div>

@@ -19,10 +19,18 @@
       </div>
     </a>
   {% endfor %} 
-  <a href="https://zzkdev.github.io/">
-    <div style="padding: 0px px 0px 5px; margin: 10px; border-color: black; border-style: solid; border-width: 1px; color: green">
-      <h2>友情链接</h2>
-      <p>杀不死的坏蛋</p>
+</div>
+
+## 友情/父子
+
+以下的链接包括了友情链接和父子链接:
+
+<div style="display: flex; justify-items: between; align-items: center; overflow-x: auto;">
+  <a href="https://zzkdev.github.io">
+    <div style="padding: 5px; margin: 10px; border-color: black; border-style: solid; border-width: 1px;">
+      <h2>杀不死的坏蛋</h2>
+      <small>父子关系，我是父</small>
     </div>
   </a>
 </div>
+

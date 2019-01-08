@@ -1,6 +1,6 @@
 ## Hark, visitor!
 
-You traveled far and deep to my personal blog that I never spread. You are in luck: for I've created thousands of blogs on my own, and finally I'd decided to try out Jekyll. Maybe it's not that bad, after all. 
+说真的，我也不知道你怎么找得到这里的，我都没告诉过别的人。但是总之，你在跋山涉水这么久之后，终于来到了 [42yeah](https://github.com/POTION4) 的个人博客这里了！！说真的，我写过无数个博客框架了。。。但我最后！！还是选择了 `Jekyll` ，这就是明显的让步了。
 
 ## 建设中 
 

@@ -19,4 +19,10 @@
       </div>
     </a>
   {% endfor %} 
+  <a href="https://zzkdev.github.io/">
+    <div style="padding: 0px px 0px 5px; margin: 10px; border-color: black; border-style: solid; border-width: 1px; color: green">
+      <h2>友情链接</h2>
+      <p>杀不死的坏蛋</p>
+    </div>
+  </a>
 </div>

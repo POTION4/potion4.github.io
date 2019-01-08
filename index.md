@@ -32,5 +32,11 @@
       <small>父子关系，我是父</small>
     </div>
   </a>
+  <a href="http://122.114.233.64">
+    <div style="padding: 5px; margin: 10px; border-color: black; border-style: solid; border-width: 1px; color: green;">
+      <h2>moonmagian</h2>
+      <small>It's been a long time.</small>
+    </div>
+  </a>
 </div>
 

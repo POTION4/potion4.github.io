@@ -27,7 +27,7 @@
 
 <div style="display: flex; justify-items: between; align-items: center; overflow-x: auto;">
   <a href="https://zzkdev.github.io">
-    <div style="padding: 5px; margin: 10px; border-color: black; border-style: solid; border-width: 1px;">
+    <div style="padding: 5px; margin: 10px; border-color: black; border-style: solid; border-width: 1px; color: green;">
       <h2>杀不死的坏蛋</h2>
       <small>父子关系，我是父</small>
     </div>

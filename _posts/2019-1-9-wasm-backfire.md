@@ -73,14 +73,15 @@ int main(void) {
 <p id="fibonacci"></p>
 
 ## 旋转的方块
-<div id="picture" style="width: 100px; height: 100px; background-color: orange;">
+<div id="picture" style="width: 100px; height: 100px; background-color: orange; margin-left: 1em;">
     &nbsp;
 </div>
 
 ## 字符串 => 二进制码
 <input id="input">
-<p id="output"></p>
 <a href="javascript:accepted()">转换</a>
+<p id="output"></p>
+
 
 
 玩得开心！
@@ -90,7 +91,7 @@ int main(void) {
     let output = document.getElementById("output")
     let fibonacci = document.getElementById("fibonacci")
     let input = document.getElementById("input")
-    let frame, binarify;
+    let frame, binarify, fib;
 
     function onRuntimeInitialized() {
         function animation() {
@@ -102,7 +103,7 @@ int main(void) {
     
     
     function oneMore() {
-        fibonacci.innerHTML = _fib()
+        fibonacci.innerHTML = fib()
     }
     
     
@@ -119,6 +120,7 @@ int main(void) {
         onRuntimeInitialized: function() {
             frame = Module.cwrap("frame", "void", [])
             binarify = Module.cwrap("binarify", "void", [ "string" ])
+            fib = Module.cwrap("fib", "string", [])
 
             onRuntimeInitialized()
         },

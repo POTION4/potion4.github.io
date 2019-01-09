@@ -8,7 +8,7 @@ title: WebAssembly 反着用回 Javascript
 ## `EM_JS`
 直接在 C/C++ 的源码中加入 `EM_JS` 可以在 C/C++ 中直接申明一个用 Javascript 写的函数：
 
-```
+```c
 EM_JS(void, alerts, (), {
     alert("hai")
     alert("bai")
@@ -25,7 +25,7 @@ int main(void) {
 
 你还可以参考多一个例子：
 
-```
+```c
 EM_JS(int, sum, (x, y), {
     return x + y
 });
@@ -36,7 +36,7 @@ EM_JS(int, sum, (x, y), {
 ## `EM_ASM`
 有的时候，可能因为心态炸了，或者是贼懒，你压根就不想声明一个函数然后再调用他。这么烦干嘛呢？很幸运，我们还有 `EM_ASM`:
 
-```
+```c
 #include <stdio.h>
 
 int main(void) {
@@ -55,7 +55,7 @@ int main(void) {
 ## `emscripten_run_script`
 忘记了还有一种方法了。。。就是这个，`emscripten_run_script`。这个几乎是一个完全本土化的 C 函数了，他接受的参数是一个 char * 。也就是说你可以这样用：
 
-```
+```c
 int main(void) {
     emscripten_run_script("console.log('hello world')");
     return 0;

@@ -83,8 +83,9 @@ int main(void) {
 <p id="output"></p>
 
 
+你随时可以进入检索来看看我实现的方法。
 
-玩得开心！
+# *玩得开心！*
 
 <script>
     let picture = document.getElementById("picture")

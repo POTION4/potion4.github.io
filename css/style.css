@@ -46,12 +46,14 @@ code {
 
 .card {
   box-shadow: -1rem 0 3rem #000;
-  margin-right: -2rem;
-  
 }
 
 .card:hover {
   transform: translate(0, -1rem);
+}
+
+.card:not(:first-child) {
+  margin-left: -10px;
 }
 
 

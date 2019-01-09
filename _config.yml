@@ -4,3 +4,6 @@ sidebar: false
 comments: true
 layout: default
 highlighter: rouge
+
+feed:
+  path: atom.xml

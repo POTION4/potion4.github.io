@@ -12,8 +12,8 @@
 
 <div style="display: flex; justify-items: between; align-items: center; overflow-x: auto;">
   {% for post in site.posts limit:10 %}
-    <a href="{{ post.url }}" class="card">
-      <div style="padding: 0px px 0px 5px; margin: 10px; border-color: black; border-style: solid; border-width: 1px;">
+    <a href="{{ post.url }}">
+      <div style="padding: 0px px 0px 5px; margin: 10px; border-color: black; border-style: solid; border-width: 1px;" class="card">
         <h2>{{ post.title }}</h2>
         <small>{{ post.excerpt }}</small>
       </div>

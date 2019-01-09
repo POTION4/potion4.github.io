@@ -1,7 +1,7 @@
 * {
   transition-property: all;
   transition-property: transform; 
-  transition-duration: 1s;
+  transition-duration: 300ms;
 }
 
 img {
@@ -51,11 +51,12 @@ code {
 
 
 .card {
-  box-shadow: -1rem 0 3rem #000;
+  box-shadow: -3px 0 3px #000;
+  margin-right: -2rem;
 }
 
 .card:hover {
-  transform: translate(0, -1rem);
+  transform: translate(-1.5rem, -1rem);
 }
 
 .card:not(:first-child) {

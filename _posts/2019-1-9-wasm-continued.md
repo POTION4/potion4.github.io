@@ -47,7 +47,7 @@ _注意：打后， `xxx` 全部用 `main` 替换，反正就是指你编译好�
 ### 除了 main 以外的方法呢？
 但是，对于 main 以外的， main 又没有调用的函数， `emcc` 可不是这样对待的。他会把这些全部当成死代码，然后在编译的时候一并删掉。那怎么保持它们存活呢？其实很简单，这里以一个 `int addOne(int what)` 为例： 
 
-```
+```c
 int EMSCRIPTEN_KEEPALIVE addOne(int what) {
     return what + 1;
 }
@@ -57,7 +57,7 @@ int EMSCRIPTEN_KEEPALIVE addOne(int what) {
 
 ### 一半？
 为什么说是一半呢？因为有的函数是不能通过这种方式调用的：
-```
+```c
 void EMSCRIPTEN_KEEPALIVE print(char *what) {
     printf("%s\n", what);
 }
@@ -77,7 +77,7 @@ void EMSCRIPTEN_KEEPALIVE print(char *what) {
 ### 后记 
 有的时候你想在窗体加载好的时候运行某段代码。但如果在这个时候在 `window.onload` 之类直接调用的话，他会告诉你他还没准备好所以没办法调用。这个时候的解决方案很简单，因为 `EMScripten` 加载好的时候是有自己的事件的，你只要在你的某个 javascript 文件中写一个处理函数就可以了：
 
-```
+```javascript
 // 这段代码会在 Wasm 准备好之后马上被调用
 function onRuntimeInitialized() {
     // ...

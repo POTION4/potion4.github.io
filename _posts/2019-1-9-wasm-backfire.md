@@ -82,8 +82,9 @@ int main(void) {
 <a href="javascript:accepted()">转换</a>
 <p id="output"></p>
 
-
+---
 你随时可以进入检索来看看我实现的方法。
+
 
 # *玩得开心！*
 

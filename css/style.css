@@ -2,3 +2,19 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+@media only screen and (min-width: 800px) {
+  body {
+    background-color: gray; 
+    display: flex; 
+    justify-items: center; 
+    padding-left: 20rem; 
+    padding-right: 20rem; 
+    padding-top: 2rem;
+  }
+
+  #contentPane {
+    padding: 1em;
+    box-shadow: 2px 2px 5px black;
+  }
+}

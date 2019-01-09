@@ -44,6 +44,18 @@ code {
 }
 
 
+.card {
+  box-shadow: -1rem 0 3rem #000;
+  margin-right: -2rem;
+}
+
+.card:hover {
+  margin-right: 0rem;
+  margin-left: -1rem;
+  margin-top: -0.5rem;
+}
+
+
 /* Those are highlight colors */ 
 .highlight .c { color: #008800; font-style: italic } /* Comment */
 .highlight .err { border: 1px solid #FF0000 } /* Error */

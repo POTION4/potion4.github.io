@@ -47,12 +47,11 @@ code {
 .card {
   box-shadow: -1rem 0 3rem #000;
   margin-right: -2rem;
+  
 }
 
 .card:hover {
-  margin-right: 0rem;
-  margin-left: -1rem;
-  margin-top: -0.5rem;
+  transform: translate(0, -1rem);
 }
 
 

@@ -12,7 +12,7 @@ WebAssembly 是一个很强大的东西，具体可以参照 [WebAssembly.org](h
 
 WebAssembly 最常用的编译器好像就是 [EMScripten](https://emscripten.org) 。这个东西可以把 C/C++ 直接翻译成 Wasm ，然后放在浏览器上跑。因此，如果你准备开搞，你需要先去[这里](http://kripken.github.io/emscripten-site/docs/getting_started/downloads.html) 下载一份 emsdk。如果把那边的英文翻译过来，是这样的：
 
-```
+```bash
 # 拿到 emsdk 的库
 git clone https://github.com/juj/emsdk.git
 
@@ -50,7 +50,7 @@ source ./emsdk_env.sh
 到目前为止，你装上了 emsdk，可能还装上或者没装上我推荐的一个网页服务器。都没关系，因为我本来也不是很熟悉这些（港真，熟悉还写博客干嘛？）。但是接下来，进入这个文件夹，新建一个文件，你就可以开始尝试写一个自己的 hello world 了：
 
 ### main.c 
-```
+```c
 #include <stdio.h>
 
 

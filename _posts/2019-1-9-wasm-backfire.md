@@ -5,7 +5,7 @@ title: WebAssembly 反着用回 Javascript
 
 前两天我们讲了一下各种 Wasm 的基本操作，以及 Javascript 中怎么样方便的调用 wasm 中存在的函数。那么你有没有想过，在 C/C++ 中有没有可能可以调用 Javascript 呢？答案是可以的，而且方法有很多种：
 
-### `EM_JS`
+## `EM_JS`
 直接在 C/C++ 的源码中加入 `EM_JS` 可以在 C/C++ 中直接申明一个用 Javascript 写的函数：
 
 ```
@@ -33,7 +33,7 @@ EM_JS(int, sum, (x, y), {
 
 这个很明显就是求和了。
 
-### `EM_ASM`
+## `EM_ASM`
 有的时候，可能因为心态炸了，或者是贼懒，你压根就不想声明一个函数然后再调用他。这么烦干嘛呢？很幸运，我们还有 `EM_ASM`:
 
 ```
@@ -52,7 +52,7 @@ int main(void) {
 
 总而言之，`EM_ASM` 可以通过这种方式来达成 C/C++/Javascript ~~滥交~~混交。通过这些方法，你既可以有的时候 C/C++，也可以有的时候 Javascript ，也可以在 Javascript 中调用 C 中调用 Javascript 中调用 C 中调用 Javascript 中调用 C 中调用 Javascript 中调用 C 中调用 Javascript 中调用 C 中调用 Javascript 中调用 C 中调用 Javascript 中调用 C 中调用 Javascript 中调用 C 中调用 Javascript 中调用 C 中调用 Javascript 中调用 C 中调用 Javascript 中调用 C 中调用 Javascript 了！！！
 
-### `emscripten_run_script`
+## `emscripten_run_script`
 忘记了还有一种方法了。。。就是这个，`emscripten_run_script`。这个几乎是一个完全本土化的 C 函数了，他接受的参数是一个 char * 。也就是说你可以这样用：
 
 ```

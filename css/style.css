@@ -8,6 +8,11 @@ img {
   src: url(/assets/fantasque.ttf) format('truetype');
 }
 
+@font-face {
+  font-family: sourcecode;
+  src: url(/assets/sourcecode.ttf) format('truetype');
+}
+
 @media only screen and (min-width: 800px) {
   body {
     background-color: gray; 
@@ -35,7 +40,7 @@ pre {
 
 
 code {
-  font-family: "fantasque";
+  font-family: "sourcecode";
 }
 
 

@@ -57,7 +57,7 @@ code {
 }
 
 .card:hover {
-  transform: translate(-0.25rem, -0.75rem);
+  transform: translate(-0.25rem, -1.25rem);
 }
 
 .card:not(:first-child) {

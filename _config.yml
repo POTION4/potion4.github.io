@@ -12,3 +12,4 @@ feed:
   path: atom.xml
   
 rss:
+author: 42yeah

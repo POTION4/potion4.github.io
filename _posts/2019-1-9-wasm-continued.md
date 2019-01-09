@@ -3,7 +3,7 @@ layout: post
 title: "WebAssembly 续篇"
 ---
 
-夜深了，这个玩意儿我可能会写两天。但是没关系，既然我决定要写点儿东西了，我就不能停下来。我们上回说到了 [WebAssembly](https://webassembly.org) 世界中的你好世界，然后现在我们知道了，用近乎 native 的速度在浏览器上跑东西的确是可能的。但是你可能同时也发现了一点，那就是：
+我们上回说到了 [WebAssembly](https://webassembly.org) 世界中的你好世界，然后现在我们知道了，用近乎 native 的速度在浏览器上跑东西的确是可能的。但是你可能同时也发现了一点，那就是：
 
 **他默认的界面也太丑了吧。。。**
 
@@ -90,4 +90,4 @@ Module["onRuntimeInitialized"] = onRuntimeInitialized
 
 
 ### 后后记 - Errata 
-我也是刚学，我觉得上面的东西可能会存在错误。如果你发现了错误，请及时纠正我。你可以在评论区说我哪错了，直接喷我，或者发到我的[邮箱](mailto://potion@live.cn) 都行。
+我也是刚学，我觉得上面的东西可能会存在错误。如果你发现了错误，请及时纠正我。你可以在评论区说我哪错了，直接喷我，或者发到我的 [邮箱](mailto:potion@live.cn) 都行。

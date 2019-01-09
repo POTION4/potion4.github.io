@@ -49,7 +49,7 @@ code {
 }
 
 .card:hover {
-  transform: translate(0, -1rem);
+  transition: translate(0, -1rem);
 }
 
 .card:not(:first-child) {

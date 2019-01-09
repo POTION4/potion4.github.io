@@ -64,3 +64,64 @@ int main(void) {
 
 通过这种方式，可以动态的执行 javascript 代码，因为是直接调用 js 中的 eval() 方法的。但是注意，如果你编译的时候增加了参数 `-s DYNAMIC_EXECUTION=0` ，那么这个函数将会不可用🚫🙅🈲️。（话说不可用的 emoji 可真多。。。）
 
+
+# 提起兴趣！！！
+经过了连续三天的 Wasm 日志！我决定用我自己写的一些小东西来提起一下大家的兴趣（如果真的有兴趣的话）。。
+
+## 斐波拉契数列
+<a href="javascript:oneMore()">算多一个</a>
+<p id="fibonacci"></p>
+
+## 旋转的方块
+<div id="picture" style="width: 100px; height: 100px; background-color: orange;">
+    &nbsp;
+</div>
+
+## 字符串 => 二进制码
+<input id="input">
+<p id="output"></p>
+<a href="javascript:accepted()">转换</a>
+
+
+玩得开心！
+
+<script>
+    let picture = document.getElementById("picture")
+    let output = document.getElementById("output")
+    let fibonacci = document.getElementById("fibonacci")
+    let input = document.getElementById("input")
+    let frame, binarify;
+
+    function onRuntimeInitialized() {
+        function animation() {
+            requestAnimationFrame(animation)
+            frame()
+        }
+        animation()
+    }
+    
+    
+    function oneMore() {
+        fibonacci.innerHTML = _fib()
+    }
+    
+    
+    function accepted() {
+        binarify(input.value)
+    }
+    
+
+    var Module = {
+        print: function(text) {
+            output.innerHTML += "<br />" + text
+        },
+
+        onRuntimeInitialized: function() {
+            frame = Module.cwrap("frame", "void", [])
+            binarify = Module.cwrap("binarify", "void", [ "string" ])
+
+            onRuntimeInitialized()
+        },
+    }
+</script>
+<script src="/assets/jff.js"></script>

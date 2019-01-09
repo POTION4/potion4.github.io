@@ -3,6 +3,11 @@ img {
   height: auto;
 }
 
+@font-face {
+  font-family: fantasque;
+  src: url(/assets/fantasque.ttf) format('truetype');
+}
+
 @media only screen and (min-width: 800px) {
   body {
     background-color: gray; 
@@ -30,7 +35,7 @@ pre {
 
 
 code {
-  font-family: "fantasque.ttf";
+  font-family: "fantasque";
 }
 
 

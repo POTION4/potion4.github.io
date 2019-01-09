@@ -16,5 +16,8 @@ img {
   #contentPane {
     padding: 1em;
     box-shadow: 2px 2px 5px black;
+    background-color: white; 
+    height: 100%; 
+    width: 100%;
   }
 }

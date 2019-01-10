@@ -1,6 +1,7 @@
 ---
 layout: post
 title: WebAssembly 外部资源
+---
 
 
 写了好几天了，我也觉得如果有看官的话，大概也看腻了。今天我也不是特别想写什么了，我就发一下我学 WebAssembly 过程的外部资源吧。实际上，说到这里，就大概是我会的所有跟 WebAssembly 的知识了。

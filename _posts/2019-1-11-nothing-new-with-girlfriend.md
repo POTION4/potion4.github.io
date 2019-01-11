@@ -18,7 +18,7 @@ title: 跟女朋友的一天
 
 我也觉得今天写的有点儿少了。。。那我就再说多点东西吧。今天我转 [Atom](https://atom.io) 粉了！跟 [Atom](https://atom.io) 比， [VSCode](https://code.visualstudio.com/) 完全是辣鸡啊！！看这可以自己改的 CSS! 我太喜欢了！！！！我给我自己的 CSS 加了这个：
 
-```CSS
+```css
 .cursors * {
  transition-property: all;
  transition-duration: 200ms;

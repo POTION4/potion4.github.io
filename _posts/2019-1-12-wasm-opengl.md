@@ -4,7 +4,9 @@ title: WebAssembly 中的 OpenGL(ES?)
 ---
 
 
-**注意，看这个可能需要有一定的 OpenGL/WebGL 基础。我没有 WebGL 基础，但我学过一点儿 OpenGL，所以我勉强能看得懂。**
+**注意，看这个可能需要有一定的 OpenGL/WebGL 基础。**
+
+OpenGL 是一个计算机图形学的库。更确切的说（防刚），是一套 specification 。通过 OpenGL 给的各种接口你可以绘制出各种炫酷玩意儿。对这个有兴趣的可以来 [这里](https://learnopengl.com) 学一下。强烈推荐！！
 
 WebAssembly 可以和 Javascript 互相通讯，进而调整 DOM 中的内容。所以，很明显，用 C/C++ 写 OpenGL/ES 代码，然后把内容显示在网页上，再也不是不可能了！！！
 

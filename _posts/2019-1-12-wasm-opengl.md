@@ -107,7 +107,7 @@ emcc main.c -o main.js -s WASM=1 -s EXTRA_EXPORTED_RUNTIME_METHODS="[ 'ccall', '
 对了，再说多一句，点了之后 Javascript 控制台可能会抛出个异常，没事，他只是在模拟真正的主循环而已：
 
 <a href="javascript:_beginMainLoop()">开始！</a>
-<canvas width="480px" height="320px" id="canvas">
+<canvas width="480px" height="320px" style="max-width: 100%;" id="canvas">
 <p id="message"></p>
 
 <script>

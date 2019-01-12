@@ -96,6 +96,7 @@ emcc main.c -o main.js -s WASM=1 -s EXTRA_EXPORTED_RUNTIME_METHODS="[ 'ccall', '
 
 ## 回到测试！
 在浏览器里打开，我们应该能够看见一个屎黄色的矩形：
+
 ![屎黄色](/assets/shitty.png)
 
 这就证明我们成功了！！为了再吸引一下你们的兴趣，给你看看我之后写好的三角形（来到这，诸位学过的应该都已经会了吧）:

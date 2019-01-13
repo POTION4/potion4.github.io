@@ -44,6 +44,12 @@ code {
 }
 
 
+a:hover {
+  text-decoration: none;
+  border-bottom: 10px dotted coral;
+}
+
+
 .card {
   transition-property: transform;
   transition-duration: 300ms;

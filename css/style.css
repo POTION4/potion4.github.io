@@ -30,6 +30,14 @@ img {
     background-color: white;
     height: 100%;
     width: 100%;
+    transition-property: transform;
+    transition-duration: 300ms;
+    transform: rotate(3deg);
+  }
+
+
+  #contentPane:hover {
+    transform: rotate(0deg) scale(1.05);
   }
 }
 
@@ -61,18 +69,6 @@ code {
 .card:not(:first-child) {
   margin-left: -10px;
 }
-
-
-#contentPane {
-  transition-property: transform;
-  transition-duration: 300ms;
-  transform: rotate(3deg);
-}
-
-#contentPane:hover {
-  transform: rotate(0deg) scale(1.05);
-}
-
 
 
 /* Those are highlight colors */

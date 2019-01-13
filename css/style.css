@@ -63,12 +63,30 @@ code {
 }
 
 
-div a img {
+div {
   transition-property: transform;
   transition-duration: 300ms;
 };
 
-div:hover a:hover img:hover {
+a {
+  transition-property: transform;
+  transition-duration: 300ms;
+};
+
+img {
+  transition-property: transform;
+  transition-duration: 300ms;
+};
+
+div:hover {
+  transform: scale(1.1);
+};
+
+a:hover {
+  transform: scale(1.1);
+};
+
+img:hover {
   transform: scale(1.1);
 };
 

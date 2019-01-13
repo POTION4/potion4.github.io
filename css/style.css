@@ -51,7 +51,7 @@ code {
   background-color: rgba(255, 255, 255, 1.0);
   margin-right: -2rem;
   transform: rotate(3deg);
-  min-width: 150px;
+  min-width: 190px;
 }
 
 .card:hover {

@@ -44,18 +44,6 @@ code {
 }
 
 
-a {
-  text-decoration: underline dotted #2e86c1;
-  transition-property: transform;
-  transition-duration: 300ms;
-}
-
-a:hover {
-  text-decoration: underline dotted #d35400;
-  transform: scale(1.1);
-}
-
-
 .card {
   transition-property: transform;
   transition-duration: 300ms;

@@ -15,11 +15,11 @@ img {
 
 @media only screen and (min-width: 800px) {
   body {
-    background-color: gray; 
-    display: flex; 
-    justify-items: center; 
-    padding-left: 15rem; 
-    padding-right: 15rem; 
+    background-color: gray;
+    display: flex;
+    justify-items: center;
+    padding-left: 15rem;
+    padding-right: 15rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
   }
@@ -27,8 +27,8 @@ img {
   #contentPane {
     padding: 1em;
     box-shadow: 2px 2px 5px black;
-    background-color: white; 
-    height: 100%; 
+    background-color: white;
+    height: 100%;
     width: 100%;
   }
 }
@@ -45,13 +45,13 @@ code {
 
 
 .card {
-  transition-property: transform; 
+  transition-property: transform;
   transition-duration: 300ms;
   box-shadow: -2px 0px 5px black;
   background-color: rgba(255, 255, 255, 1.0);
   margin-right: -2rem;
   transform: rotate(3deg);
-  min-width: 200px;
+  min-width: 150px;
 }
 
 .card:hover {
@@ -63,7 +63,7 @@ code {
 }
 
 
-/* Those are highlight colors */ 
+/* Those are highlight colors */
 .highlight .c { color: #008800; font-style: italic } /* Comment */
 .highlight .err { border: 1px solid #FF0000 } /* Error */
 .highlight .k { color: #AA22FF; font-weight: bold } /* Keyword */

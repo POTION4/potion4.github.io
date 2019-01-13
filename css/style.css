@@ -55,12 +55,22 @@ code {
 }
 
 .card:hover {
-  transform: translate(-0.25rem, -2rem);
+  transform: translate(-0.25rem, -2rem) !important;
 }
 
 .card:not(:first-child) {
   margin-left: -10px;
 }
+
+
+div a img {
+  transition-property: transform;
+  transition-duration: 300ms;
+};
+
+div:hover a:hover img:hover {
+  transform: scale(1.1);
+};
 
 
 /* Those are highlight colors */

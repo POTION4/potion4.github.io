@@ -63,32 +63,16 @@ code {
 }
 
 
-div {
+#contentPane {
   transition-property: transform;
   transition-duration: 300ms;
+  transform: rotate(3deg);
 }
 
-a {
-  transition-property: transform;
-  transition-duration: 300ms;
+#contentPane:hover {
+  transform: rotate(0deg) scale(1.05);
 }
 
-img {
-  transition-property: transform;
-  transition-duration: 300ms;
-}
-
-div:hover {
-  transform: scale(1.05);
-}
-
-a:hover {
-  transform: scale(1.05);
-}
-
-img:hover {
-  transform: scale(1.05);
-}
 
 
 /* Those are highlight colors */

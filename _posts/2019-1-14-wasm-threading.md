@@ -83,7 +83,7 @@ Firefox 的选项应该也很接近吧。把它打开就完事了。你可能需
 
 <a href="javascript:_start()">开始！</a>
 
-<p id="output"></p>
+<p id="output" style="font-family: sourcecode;"></p>
 <script>
     let output = document.getElementById("output")
 

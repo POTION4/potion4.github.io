@@ -52,6 +52,11 @@ code {
 }
 
 
+a:hover {
+  background-color: lightgray;
+}
+
+
 .card {
   transition-property: transform;
   transition-duration: 300ms;

@@ -76,6 +76,24 @@ a:hover {
 }
 
 
+/* Some minihacks about bing */
+#MicrosoftTranslatorWidget {
+  width: 100% !important;
+}
+
+#WidgetLauncher {
+  width: 100% !important;
+}
+
+#LauncherTranslatePhrase {
+  margin-right: 10px !important;
+}
+
+#LauncherLogoImage {
+  display: none;
+}
+
+
 /* Those are highlight colors */
 .highlight .c { color: #008800; font-style: italic } /* Comment */
 .highlight .err { border: 1px solid #FF0000 } /* Error */

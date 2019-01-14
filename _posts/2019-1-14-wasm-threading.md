@@ -63,6 +63,7 @@ em++ threads/main.cpp -o threads/threads.html -s EXTRA_EXPORTED_RUNTIME_METHODS=
 浏览器的设置不难打开，如果你忘了我可以给你：
 - [Firefox 入口](about:config): `about:config`
 - [Chrome 入口](about:flags): `about:flags`
+
 浏览器不给加载本地内容的话，直接复制链接到新窗口粘贴就可以了。
 
 打开完了之后，这里以我的 Chromium 为例，搜索 WebAssembly:

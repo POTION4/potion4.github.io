@@ -1,15 +1,18 @@
 theme: screw-themes-i-am-not-using-them
-title: Frame of 42yeah 
+title: Frame of 42yeah
 sidebar: false
 comments: true
 layout: default
 highlighter: rouge
 
+url: "https://potion4.github.io"
+
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
 
 feed:
   path: atom.xml
-  
+
 rss:
 author: 42yeah

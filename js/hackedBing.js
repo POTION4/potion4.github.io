@@ -1404,7 +1404,7 @@ function(n) {
         function wt(n, t) {
             return !b(n) && k(t)
         }
-        var i = n.core.Logging, bt = "/widget/snapshot/getentities", d = "/widget/snapshot/extract", kt = "/widget/snapshot/getsettings", dt = "/widget/knowledge/config", gt = "/widget/snapshot/feedback", g = "_b_w_lf", ni = "bing_widget_snapshotdebug=1", l = "b_w_i_f_d", nt = "b_w_i_dd", tt = "", ti = "bing_widget_snapshot_override=", a = 512, v = 128, y = 256, p = 4096, ii = "340px", ri = "290px", s, h, c, at;
+        var i = null, bt = "/widget/snapshot/getentities", d = "/widget/snapshot/extract", kt = "/widget/snapshot/getsettings", dt = "/widget/knowledge/config", gt = "/widget/snapshot/feedback", g = "_b_w_lf", ni = "bing_widget_snapshotdebug=1", l = "b_w_i_f_d", nt = "b_w_i_dd", tt = "", ti = "bing_widget_snapshot_override=", a = 512, v = 128, y = 256, p = 4096, ii = "340px", ri = "290px", s, h, c, at;
         t.extractIeInsights = ci;
         t.getSnapshotTypeOverride = ft;
         t.closeDebug = bi;
@@ -2078,7 +2078,7 @@ function(n) {
                 u()) : r.error("BW", "Failed to load JQuery", "bootstrap.knowledge.loadJQuery")
             })
         }
-        var r = n.core.Logging, i;
+        var r = null, i;
         t.$bw;
         i = "//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.min.js";
         t.loadJQuery = u
@@ -2637,7 +2637,7 @@ function(n) {
             }
             ,
             i.prototype.logSnapshotClick = function(t, i) {
-                n.core.Logging.dims("BN", 0, 0, this.getSnapshotTypeString(this.parseEntityIdFromUrl(i)), this.props ? this.props.url : "", this.widgetMarket, this.options.formCode, t)
+                // n.core.Logging.dims("BN", 0, 0, this.getSnapshotTypeString(this.parseEntityIdFromUrl(i)), this.props ? this.props.url : "", this.widgetMarket, this.options.formCode, t)
             }
             ,
             i.prototype.initializeKnowledgeInsights = function() {
@@ -2688,7 +2688,7 @@ function(n) {
     (function(t) {
         var i;
         (function(i) {
-            var r = n.core.Logging
+            var r = null
               , u = function(i) {
                 function u(n, r, u, f, e, o) {
                     i.call(this, u, r, !1);
@@ -3544,7 +3544,7 @@ function(n) {
 function(n) {
     var t;
     (function(t) {
-        var u = n.core.Logging, i = n.core.getAttr, r = n.core.setAttr, f = ["outlook.com", "gmail.com", "live.com", "mail.yahoo.com", "hotmail.com", "mail.google.com"], e = function() {
+        var u = null, i = n.core.getAttr, r = n.core.setAttr, f = ["outlook.com", "gmail.com", "live.com", "mail.yahoo.com", "hotmail.com", "mail.google.com"], e = function() {
             function n() {
                 this.isKnowledgeConfigFetched = !1;
                 this.config = null;
@@ -4283,7 +4283,7 @@ function(n) {
                     _bw.sj_evt.fire(r),
                     i in u.menuHandlers) {
                         var e = u.menuHandlers[i].checkState.call(u, f).toString();
-                        n.core.Logging.click("UP", i, e)
+                        // n.core.Logging.click("UP", i, e)
                     }
                 })
             }

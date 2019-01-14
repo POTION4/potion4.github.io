@@ -1,5 +1,12 @@
-const translatorWidget = document.getElementById("MicrosoftTranslatorWidget")
+const onload = window.onload
 
-translatorWidget.onchange = function() {
-  translatorWidget.style.backgroundColor = rgb(85, 85, 85)
+
+window.onload = function() {
+  if (onload) { onload() }
+
+  const translatorWidget = document.getElementById("MicrosoftTranslatorWidget")
+
+  translatorWidget.onchange = function() {
+    translatorWidget.style.backgroundColor = rgb(85, 85, 85)
+  }
 }

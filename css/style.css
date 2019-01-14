@@ -79,6 +79,7 @@ a:hover {
 /* Some minihacks about bing */
 #MicrosoftTranslatorWidget {
   width: 100% !important;
+  margin-bottom: -30px !important;
 }
 
 #WidgetLauncher {

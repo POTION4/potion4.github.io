@@ -40,4 +40,10 @@
       <small>It's been a long time.</small>
     </div>
   </a>
+  <a href="https://gamejilu.com">
+    <div style="padding: 5px; margin: 10px; border-color: black; border-style: solid; border-width: 1px; color: green; background-color: white;">
+      <h2>gamejilu</h2>
+      <small>脆饼的博客。他说要更好地體驗遊戲的樂趣！</small>
+    </div>
+  </a>
 </div>

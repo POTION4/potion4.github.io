@@ -290,7 +290,7 @@ int main(int argc, char* argv[])
 
 ![MLGBD](/assets/comeon.png)
 
-emmm... 有点小失望……所以今晚就此结束了……
+难道真的是太严了？emmm... 有点小失望……所以今晚就此结束了……
 
 ## 一堆名词
 
@@ -299,3 +299,4 @@ emmm... 有点小失望……所以今晚就此结束了……
 - [coturn/coturn](https://github.com/coturn/coturn) - coturn 是一个实现了 RFC 5766 的服务器。就我所知，他在 [Ubuntu](https://www.ubuntu.com) 的仓库内，可以直接 `apt-get` 。
 - [ICE](https://en.wikipedia.org/wiki/Interactive_Connectivity_Establishment) - 另外一种标准化的搞 NAT 穿透的东西（没试过，并且不知道他跟 STUN 是不是同类的东西，还是像辅助那样）
 - [STUN, TURN, ICE 介绍](https://blog.csdn.net/byxdaz/article/details/52786600) - CSDN 上的一篇博客。为毛穿透的缩写都喜欢缩写成一个单词？疑惑不解.jpg
+- [TURN](https://en.wikipedia.org/wiki/Traversal_Using_Relays_around_NAT) - 既然说到了 TURN ，那就也上一下他的链接吧。我根本就没看过这个……

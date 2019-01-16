@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh">
+  {% include headers.html %}
+  <body>
+    <div id="contentPane" class="paperi main">
+      <h1>Frame of 42yeah</h1>
+      <h2>{{ category | first }}</h2>
+      <hr />
+      <section>
+        {% include translator.html %}
+        {% for post in category %}
+          {{ post }}
+        {% endfor %}
+      </section>
+      {% include commentary.html %}
+    </div>
+  </body>
+</html>

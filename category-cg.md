@@ -1,4 +1,0 @@
----
-resource: true
-category: cg
----

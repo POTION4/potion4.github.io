@@ -16,3 +16,7 @@ feed:
 
 rss:
 author: 42yeah
+
+collections:
+  category:
+    output: true

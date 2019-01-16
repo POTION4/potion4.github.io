@@ -13,7 +13,10 @@
             <h1>Frame of 42yeah</h1>
             <h2>{{ post.title }}</h2>
             <hr />
-            {{ post.excerpt }}
+            <p>
+              {{ post.excerpt }}
+            </p>
+            <a href="{{ post.url }}">开始阅读</a>
           </div>
         {% endfor %}
       </section>

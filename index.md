@@ -17,7 +17,7 @@ title: Frame of 42yeah
         <div>|</div>
       {% endif %}
       <div style="padding-left: 10px; padding-right: 10px;">
-        <a href="javascript:void()">{{ category | first }}</a>
+        <a href="/category/{{ category | first }}">{{ category | first }}</a>
       </div>
     {% endfor %}
   </div>

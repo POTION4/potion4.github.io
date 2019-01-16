@@ -9,7 +9,7 @@ title: Frame of 42yeah
     <div>
       <a href="javascript:void()">{{ category | first }}</a>
     </div>
-    {% if category != site.categories.last %}
+    {% if category != (site.categories | last) %}
       <div>|</div>
     {% endif %}
   {% endfor %}

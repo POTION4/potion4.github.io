@@ -24,7 +24,7 @@ img {
     padding-bottom: 2rem;
   }
 
-  #contentPane {
+  .paperi {
     padding: 1em;
     box-shadow: 2px 2px 5px black;
     background-color: white;
@@ -37,7 +37,7 @@ img {
   }
 
 
-  #contentPane:hover {
+  .paperi:hover {
     transform: rotate(0deg) scale(1.0);
   }
 }

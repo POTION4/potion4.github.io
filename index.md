@@ -4,11 +4,14 @@ title: Frame of 42yeah
 
 ## Hark, visitor!
 
-<div style="display: flex; justify-items: between; align-items: center">
+<div style="display: flex; justify-items: between; align-items: center; width: 100%; overflow-x: auto;">
   {% for category in site.categories %}
     <div>
       <a href="javascript:void()">{{ category | first }}</a>
     </div>
+    {% if category != site.categories.last %}
+      <div>|</div>
+    {% endif %}
   {% endfor %}
 </div>
 

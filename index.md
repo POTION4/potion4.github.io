@@ -2,21 +2,19 @@
 title: Frame of 42yeah
 ---
 
-<div class="paperi">
+<div class="paperi floats">
   <h2>所有分类</h2>
-  <div style="display: flex; justify-items: between; align-items: center; overflow-x: auto;">
-    {% assign first = true %}
-    {% for category in site.categories %}
-      {% if first %}
-        {% assign first = false %}
-      {% else %}
-        <div>|</div>
-      {% endif %}
-      <div style="padding-left: 10px; padding-right: 10px;">
-        <a href="javascript:void()">{{ category | first }}</a>
-      </div>
-    {% endfor %}
-  </div>
+  {% assign first = true %}
+  {% for category in site.categories %}
+    {% if first %}
+      {% assign first = false %}
+    {% else %}
+      <span>|</span>
+    {% endif %}
+    <span style="padding-left: 10px; padding-right: 10px;">
+      <a href="javascript:void()">{{ category | first }}</a>
+    </span>
+  {% endfor %}
 </div>
 
 ## Hark, visitor!

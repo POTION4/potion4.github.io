@@ -5,7 +5,7 @@ title: Frame of 42yeah
 <div style="display: flex; justify-items: between; align-items: center">
   {% for category in site.categories %}
     <div>
-      <a href="javascript:void()">{{ category }}</a>
+      <a href="javascript:void()">{{ category.name }}</a>
     </div>
   {% endfor %}
 </div>

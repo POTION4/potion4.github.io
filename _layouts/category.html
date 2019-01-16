@@ -4,11 +4,11 @@
   <body>
     <div id="contentPane" class="paperi main">
       <h1>Frame of 42yeah</h1>
-      <h2>{{ category | first }}</h2>
+      <h2>{{ page.category }}</h2>
       <hr />
       <section>
         {% include translator.html %}
-        {% for post in category %}
+        {% for post in site.categories[page.category] %}
           {{ post }}
         {% endfor %}
       </section>

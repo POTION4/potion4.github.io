@@ -33,6 +33,7 @@ img {
     transition-property: transform;
     transition-duration: 300ms;
     transform: rotate(3deg) scale(0.95);
+    transform-origin: center top;
   }
 
 

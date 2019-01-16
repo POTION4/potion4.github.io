@@ -2,8 +2,9 @@
 title: Frame of 42yeah
 ---
 
-<div class="paperi" style="display: flex; justify-items: between; align-items: center; width: 100%; overflow-x: auto;">
-  ## 所有分类
+<div class="paperi">
+## 所有分类
+<div style="display: flex; justify-items: between; align-items: center; width: 100%; overflow-x: auto;"
   {% assign first = true %}
   {% for category in site.categories %}
     {% if first %}

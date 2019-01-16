@@ -5,13 +5,16 @@ title: Frame of 42yeah
 ## Hark, visitor!
 
 <div style="display: flex; justify-items: between; align-items: center; width: 100%; overflow-x: auto;">
+  {% assign first = true %}
   {% for category in site.categories %}
-    <div>
-      <a href="javascript:void()">{{ category | first }}</a>
-    </div>
-    {% if category != (site.categories | last) %}
+    {% if first %}
+      {% assign first = false %}
+    {% else %}
       <div>|</div>
     {% endif %}
+    <div style="padding-left: 10px; padding-right: 10px;">
+      <a href="javascript:void()">{{ category | first }}</a>
+    </div>
   {% endfor %}
 </div>
 

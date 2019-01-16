@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 跟女朋友的一天
+categories: [ girlfriend, atom ]
 ---
 
 今天大概是不会写一些什么的了，我女票来找我了。。。作为回报，我们会去大岭山那边吃[仙庙烧鸡](http://www.chinaxmsj.com/)。

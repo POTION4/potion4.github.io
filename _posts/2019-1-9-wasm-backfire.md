@@ -1,6 +1,7 @@
 ---
 layout: post
 title: WebAssembly 反着用回 Javascript
+categories: [ webassembly ]
 ---
 
 前两天我们讲了一下各种 Wasm 的基本操作，以及 Javascript 中怎么样方便的调用 wasm 中存在的函数。那么你有没有想过，在 C/C++ 中有没有可能可以调用 Javascript 呢？答案是可以的，而且方法有很多种：
@@ -12,7 +13,7 @@ title: WebAssembly 反着用回 Javascript
 EM_JS(void, alerts, (), {
     alert("hai")
     alert("bai")
-}); 
+});
 
 
 int main(void) {
@@ -102,17 +103,17 @@ int main(void) {
         }
         animation()
     }
-    
-    
+
+
     function oneMore() {
         fibonacci.innerHTML = fib()
     }
-    
-    
+
+
     function accepted() {
         binarify(input.value)
     }
-    
+
 
     var Module = {
         print: function(text) {

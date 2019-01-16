@@ -1,6 +1,7 @@
 ---
 layout: post
 title: WebAssembly 中的 OpenGL(ES?)
+categories: [ webassembly, cg ]
 ---
 
 

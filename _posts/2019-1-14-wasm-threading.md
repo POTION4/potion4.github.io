@@ -1,6 +1,7 @@
 ---
 layout: post
 title: WebAssembly 中的多线程
+categories: [ webassembly ]
 ---
 
 

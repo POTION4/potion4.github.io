@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "WebAssembly 续篇"
+categories: [ webassembly ]
 ---
 
 我们上回说到了 [WebAssembly](https://webassembly.org) 世界中的你好世界，然后现在我们知道了，用近乎 native 的速度在浏览器上跑东西的确是可能的。但是你可能同时也发现了一点，那就是：
@@ -22,7 +23,7 @@ _注意：打后， `xxx` 全部用 `main` 替换，反正就是指你编译好�
 
 废话少说，我们要怎么做呢？
 
-### 新建一个空网页 
+### 新建一个空网页
 新建一个文件，就叫 `index.html` 吧。
 
 ### 往里面填你自己喜欢的内容
@@ -36,16 +37,16 @@ _注意：打后， `xxx` 全部用 `main` 替换，反正就是指你编译好�
 ### 引出了新的问题
 但是，这样又有了新的问题了。既然我都已经可以用自己的 html 了，是不是也就意味着我能够什么时候调用 wasm 的方法都行呢？因为有的时候我们的确不想他一开始就运行一个 main()，输出句话，然后退出。有的时候我们会想等待用户的输入，然后再执行相应的 wasm 代码。
 
-在 emcc 之中，你编译好的方法一般会存在于 `window.Module.asm` 当中: 
+在 emcc 之中，你编译好的方法一般会存在于 `window.Module.asm` 当中:
 ![补全](/assets/autocomplete.png)
 
 你可以看到，`malloc`, `free`, `main` 之类的以前面加了条下划线的形式存在于里面。其实你还可以尝试调用一下：
-`_main()` 
+`_main()`
 
 你就可以发现，的确是可以执行的。
 
 ### 除了 main 以外的方法呢？
-但是，对于 main 以外的， main 又没有调用的函数， `emcc` 可不是这样对待的。他会把这些全部当成死代码，然后在编译的时候一并删掉。那怎么保持它们存活呢？其实很简单，这里以一个 `int addOne(int what)` 为例： 
+但是，对于 main 以外的， main 又没有调用的函数， `emcc` 可不是这样对待的。他会把这些全部当成死代码，然后在编译的时候一并删掉。那怎么保持它们存活呢？其实很简单，这里以一个 `int addOne(int what)` 为例：
 
 ```c
 int EMSCRIPTEN_KEEPALIVE addOne(int what) {
@@ -74,7 +75,7 @@ void EMSCRIPTEN_KEEPALIVE print(char *what) {
 
 这样一来，编译的时候就会知道要支持 cwrap 了。也就是说，现在我们已经可以自由的在 Javascript 中调用 Wasm 的函数了！
 
-### 后记 
+### 后记
 有的时候你想在窗体加载好的时候运行某段代码。但如果在这个时候在 `window.onload` 之类直接调用的话，他会告诉你他还没准备好所以没办法调用。这个时候的解决方案很简单，因为 `EMScripten` 加载好的时候是有自己的事件的，你只要在你的某个 javascript 文件中写一个处理函数就可以了：
 
 ```javascript
@@ -89,5 +90,5 @@ Module["onRuntimeInitialized"] = onRuntimeInitialized
 <small>就是这样了。玩得愉快！</small>
 
 
-### 后后记 - Errata 
+### 后后记 - Errata
 我也是刚学，我觉得上面的东西可能会存在错误。如果你发现了错误，请及时纠正我。你可以在评论区说我哪错了，直接喷我，或者发到我的 [邮箱](mailto:potion@live.cn) 都行。

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: WebAssembly 外部资源
+categories: [ webassembly ]
 ---
 
 

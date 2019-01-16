@@ -9,7 +9,12 @@
       <section>
         {% include translator.html %}
         {% for post in site.categories[page.category] %}
-          {{ post }}
+          <div class="paperi main">
+            <h1>Frame of 42yeah</h1>
+            <h2>{{ post.title }}</h2>
+            <hr />
+            {{ post.excerpt }}
+          </div>
         {% endfor %}
       </section>
       {% include commentary.html %}

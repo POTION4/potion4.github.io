@@ -6,11 +6,11 @@
       <h1>Frame of 42yeah</h1>
       <h2>{{ page.category }}</h2>
       <hr />
-      
+
       <section>
         {% include translator.html %}
         {% for post in site.categories[page.category] %}
-          <div class="paperi main">
+          <div class="paperi main stick">
             <h1 class="gnome">Frame of 42yeah</h1>
             <h2>{{ post.title }}</h2>
             <hr class="gnome" />

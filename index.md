@@ -6,7 +6,7 @@ title: Frame of 42yeah
 
 说真的，我也不知道你怎么找得到这里的，我都没告诉过别的人。但是总之，你在跋山涉水这么久之后，终于来到了 [42yeah](https://github.com/POTION4) 的个人博客这里了！！说真的，我写过无数个博客框架了。。。但我最后！！还是选择了 `Jekyll` ，这就是明显的让步了。
 
-<div class="paperi floats">
+<div class="paperi floats stick">
   <h2>所有分类</h2>
   <div style="display: flex; justify-items: between; align-items: center; overflow-x: auto;">
     {% assign first = true %}

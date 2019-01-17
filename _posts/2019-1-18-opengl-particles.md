@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 粒子系统！
+categories: [ cg ]
 ---
 
 我已经大概有很久很久没有看过 OpenGL 了吧……所以我决定今天看一哈，于是我恢复了我龟速的进度，也就是 [这里](https://learnopengl.com/Advanced-OpenGL/Advanced-Data) 。于是，咱们来总结一下我看了的内容。

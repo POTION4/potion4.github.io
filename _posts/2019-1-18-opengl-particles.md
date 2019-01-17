@@ -9,10 +9,10 @@ categories: [ cg ]
 OpenGL 的 [VBO](https://www.khronos.org/opengl/wiki/Buffer_Object) 是很灵活的。从我的个人理解来说，它就是一条储存在 GPU 里边的数组。所以，我们不仅可以在一开始的时候直接用 [`glBufferData`](https://www.khronos.org/opengl/wiki/GLAPI/glBufferData) 来初始化他，还可以用很多很多的方法！这里是官方文档给出的：
 
 - [`glBufferData`](https://www.khronos.org/opengl/wiki/GLAPI/glBufferData) 可以初始化一个 VBO ，具体的参数是:
-    - `target`: 可以从这些里边选一个: `GL_ARRAY_BUFFER, GL_ATOMIC_COUNTER_BUFFER, GL_COPY_READ_BUFFER, GL_COPY_WRITE_BUFFER, GL_DRAW_INDIRECT_BUFFER, GL_DISPATCH_INDIRECT_BUFFER, GL_ELEMENT_ARRAY_BUFFER, GL_PIXEL_PACK_BUFFER, GL_PIXEL_UNPACK_BUFFER, GL_QUERY_BUFFER, GL_SHADER_STORAGE_BUFFER, GL_TEXTURE_BUFFER, GL_TRANSFORM_FEEDBACK_BUFFER, ` 或者 ` GL_UNIFORM_BUFFER`。通常都选择 `GL_ARRAY_BUFFER`……吧？
+    - `target`: 可以从这些里边选一个: `GL_ARRAY_BUFFER, GL_ATOMIC_COUNTER_BUFFER, GL_COPY_READ_BUFFER, GL_COPY_WRITE_BUFFER, GL_DRAW_INDIRECT_BUFFER, GL_DISPATCH_INDIRECT_BUFFER, GL_ELEMENT_ARRAY_BUFFER, GL_PIXEL_PACK_BUFFER, GL_PIXEL_UNPACK_BUFFER, GL_QUERY_BUFFER, GL_SHADER_STORAGE_BUFFER, GL_TEXTURE_BUFFER, GL_TRANSFORM_FEEDBACK_BUFFER, ` 或者 `GL_UNIFORM_BUFFER`。通常都选择 `GL_ARRAY_BUFFER`……吧？
     - `size`: 第三个参数的大小
     - `data`: 可以是指向一个数组的指针，也可以是 `NULL/nullptr` 。如果是后边那个的话，会给你初始化一个 `size` 大的空 VBO(里边的值全为 0)。
-    - `usage`: 可以从这些里边选一个: `GL_STREAM_DRAW, GL_STREAM_READ, GL_STREAM_COPY, GL_STATIC_DRAW, GL_STATIC_READ, GL_STATIC_COPY, GL_DYNAMIC_DRAW, GL_DYNAMIC_READ, ` 或者 ` GL_DYNAMIC_COPY`。别的我不太清楚，但是如果选了 `GL_STATIC_DRAW`，那每一次 `glBufferData` 都会在显卡那边重新初始化 VBO 一次，导致如果重复调用的话会效率奇低。（虽然如果不需要的话那这个挺好的……）
+    - `usage`: 可以从这些里边选一个: `GL_STREAM_DRAW, GL_STREAM_READ, GL_STREAM_COPY, GL_STATIC_DRAW, GL_STATIC_READ, GL_STATIC_COPY, GL_DYNAMIC_DRAW, GL_DYNAMIC_READ, ` 或者 `GL_DYNAMIC_COPY`。别的我不太清楚，但是如果选了 `GL_STATIC_DRAW`，那每一次 `glBufferData` 都会在显卡那边重新初始化 VBO 一次，导致如果重复调用的话会效率奇低。（虽然如果不需要的话那这个挺好的……）
 - [`glBufferStorage`](https://www.khronos.org/opengl/wiki/GLAPI/glBufferStorage) 也可以初始化一个 VBO。但和上面那个不一样的是，这个东西初始化过之后，里面的内容再也不能用 __这个和上面那个__ 再初始化一次了。参数很接近，但因为我没用到，这里就不给出来了。你可以上网查，或者你看到的上一条链接。
 
 ……对，其实就两种，所以没有很多很多种方法。但是没关系！这不还是初始化好了吗？但是，这时别以为里边的内容就再也不能更改了！即使是通过 [`glBufferStorage`](https://www.khronos.org/opengl/wiki/GLAPI/glBufferStorage) 来初始化的，里面的内容也是可以更改的。这个感觉就像在 C++ 里边来了一句 `char * const buf` 一样吧……指针不能再改了，但不代表里边的内容不能改:

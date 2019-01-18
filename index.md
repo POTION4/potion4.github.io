@@ -28,7 +28,7 @@ title: Frame of 42yeah
 我大概会在晚上才更新。以下是最新的推：
 
 <div style="display: flex; justify-items: between; align-items: center; overflow-x: auto; padding: 2.5rem;">
-  {% for post in site.posts limit:10 %}
+  {% for post in site.posts limit:5 %}
     <a href="{{ post.url }}">
       <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
         <h2>{{ post.title }}</h2>

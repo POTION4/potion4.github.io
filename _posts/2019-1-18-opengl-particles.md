@@ -214,25 +214,4 @@ int main(int argc, const char * argv[]) {
 }
 ```
 
-## glad 的代码就不上了吧
-
-## utility.hpp 我们只放头文件的，自己去实现
-```c++
-#ifndef utility_hpp
-#define utility_hpp
-
-#include <iostream>
-#include "../include/glad/glad.h"
-
-
-GLuint shader(GLuint type, std::string path);
-
-GLuint program(std::string vertex, std::string fragment);
-
-
-#endif /* utility_hpp */
-```
-
-## GLSL 也自己去实现
-
 那就这样啦！

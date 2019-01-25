@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 安卓的动态壁纸
+title: 安卓动态壁纸的实现！
 categories: [ android, cg ]
 ---
 

@@ -38,14 +38,12 @@ title: Frame of 42yeah
       </div>
     </a>
   {% endfor %}
-  <a href="{{ post.url }}">
-    <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: dashed; border-width: 5px; max-width: 200px;" class="card">
-      <h2>还有很多……</h2>
-      <p style="padding: 0.25rem;">
-        <small>前往相应的分类看吧！</small>
-      </p>
-    </div>
-  </a>
+  <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: dashed; border-width: 2px; max-width: 200px;" class="card">
+    <h2 style="color: #555;">还有很多……</h2>
+    <p style="padding: 0.25rem; color: #555;">
+      <small>前往相应的分类看吧！</small>
+    </p>
+  </div>
 </div>
 
 ## 友情

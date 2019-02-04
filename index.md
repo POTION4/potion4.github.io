@@ -14,9 +14,9 @@ title: Frame of 42yeah
       {% if first %}
         {% assign first = false %}
       {% else %}
-        ，
+        ,
       {% endif %}
-      <span style="padding-left: 10px; padding-right: 10px;">
+      <span style="padding-left: 5px; padding-right: 5px;">
         <a href="/category/{{ category | first }}">{{ category | first }}</a>
       </span>
     {% endfor %}

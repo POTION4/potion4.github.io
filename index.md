@@ -8,17 +8,17 @@ title: Frame of 42yeah
 
 <div class="paperi floats stick">
   <h2>所有分类</h2>
-  <div style="display: flex; justify-items: between; align-items: center; overflow-x: auto;">
+  <div>
     {% assign first = true %}
     {% for category in site.categories %}
       {% if first %}
         {% assign first = false %}
       {% else %}
-        <div>|</div>
+        ，
       {% endif %}
-      <div style="padding-left: 10px; padding-right: 10px;">
+      <span style="padding-left: 10px; padding-right: 10px;">
         <a href="/category/{{ category | first }}">{{ category | first }}</a>
-      </div>
+      </span>
     {% endfor %}
   </div>
 </div>

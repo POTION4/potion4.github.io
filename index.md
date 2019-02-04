@@ -60,7 +60,7 @@ title: Frame of 42yeah
   <a href="http://www.moonsekai.xyz">
     <div style="padding: 5px; margin: 10px; border-color: black; border-style: solid; border-width: 1px; color: green; background-color: white;">
       <h2>moonmagian</h2>
-      <small>It's been a long time. <sub>注: 2018-2-4，我更新了 moon 的博客传送门（他终于有域名了），之前的我就不链了……</sub></small>
+      <small>It's been a long time. <br /><sub>注: 2018-2-4，我更新了 moon 的博客传送门（他终于有域名了），之前的我就不链了……</sub></small>
     </div>
   </a>
   <a href="https://gamejilu.com">

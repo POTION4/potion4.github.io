@@ -4,7 +4,7 @@ title: Frame of 42yeah
 
 ## Hark, visitor!
 
-说真的，我也不知道你怎么找得到这里的，我都没告诉过别的人。但是总之，你在跋山涉水这么久之后，终于来到了 [42yeah](https://github.com/POTION4) 的个人博客这里了！！说真的，我写过无数个博客框架了。。。但我最后！！还是选择了 `Jekyll` ，这就是明显的让步了。
+欢迎来到 [42yeah](https://github.com/POTION4) 的个人博客！如果想知道更多关于我的消息，往下滚到 Portfolio 即可。
 
 <div class="paperi floats stick">
   <h2>所有分类</h2>
@@ -70,3 +70,23 @@ title: Frame of 42yeah
     </div>
   </a>
 </div>
+
+
+## Portfolio 
+
+- 我是一个来自 [东莞理工学院](http://www.dgut.edu.cn/) 的学生。
+- 我非常想学图形学。
+- 我喜欢玩独立游戏，包括但不限于：
+	- Nethack 
+	- 一系列的经典偏硬核 Roguelike
+	- 一些可以多人游戏的游戏，**一般不包括 FPS**
+- 我喜欢玩 4X，但是我很菜
+- 我学过一系列的程序语言，但大部分都是浅尝辄止，没啥技术
+- 我支持 LGBT ，虽然我本人是直的
+- 我不喜欢吃牛肉丸，干蒸，烧卖，虾饺，云吞，^(?!.\*(韭菜)).\*饺子，牛奶，重芝士，etc……
+- 我的邮箱是 [potion@live.cn](mailto:potion@live.cn)
+- 我做过很多小作品，有兴趣的大佬可以发我邮箱问一下我
+- 我觉得可口可乐比百事可乐要好喝
+- 我觉得麦当劳比肯德基要好吃，虽然肯德基有奥尔良系列
+- 我觉得尊宝是所有 Pizza 当中最好吃的，第二是 Domino 
+- I love my girlfriend!

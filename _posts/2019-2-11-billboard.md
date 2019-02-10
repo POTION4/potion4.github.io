@@ -82,11 +82,13 @@ gl_Position = perspec * view * vertexPosition_worldspace;
 在这里，opengl-tutorial 是 **这样** 解释的: 
 
 ---
+
 ## Solution #4 : Vertical rotation only
 
 Some systems model faraway trees and lamps as billboards. But you really, really don’t want your tree to be bent : it MUST be vertical. So you need an hybrid system that rotates only around one axis.
 
 Well, this one **is left as an exercise to the reader !**
+
 ---
 
 WTF? An exercise? 我连上面的都没懂……

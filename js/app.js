@@ -19,7 +19,7 @@ window.onload = function() {
         
         ]
     
-        const choose = random() * list.length
+        const choose = Math.random() * list.length
         quote.innerHTML = list[choose]
     }
 }

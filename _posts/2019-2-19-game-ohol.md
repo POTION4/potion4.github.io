@@ -101,12 +101,12 @@ open OneLife_OneLife.app/
 
 打开了之后，你还要一个自己的账号/密码。这个账号密码呢，就是要买了游戏才能有的。它能让你进这个游戏的官服，但是不代表这个游戏的私服你进不了……对吧？游戏的源码是有服务器的源代码的，就在 `server` 目录下。`./configure` 一下，`make` 一下（这里要把 `values.h` 的 include 换成 `float.h` ，因为很明显这个头文件名字早变了，不然过不了编译），这不就是自己的私服了嘛，对不。
 
-## 但是版本不一样，咋办？
+## 但是连接的时候说版本不一样，咋办？
 
 在 `server` 或者是你的服务器二进制目录下：
 
 ```bash
-echo "<客户端说的版本>" > serverCodeVersionNumber.txt
+echo "客户端说的版本" > serverCodeVersionNumber.txt
 ```
 
 ## 还是登陆失败，咋办？

@@ -52,7 +52,7 @@ title: Frame of 42yeah
 </div>
       {% endif %}
 <a href="{{ post.url }}">
-  <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
+<div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
 <h2>{{ post.title }}</h2>
 <p style="padding: 0.25rem;">
 <small>{{ post.excerpt }}</small>

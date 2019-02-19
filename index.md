@@ -38,11 +38,13 @@ title: Frame of 42yeah
       {% if firstBlah %}
         {% assign firstBlah = false %}
         <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
+          <h2>随口瞎吹</h2>
       {% endif %}
-      <h2>{{ post.title }}</h2>
-      <p style="padding: 0.25rem;">
-        <small>{{ post.excerpt }}</small>
-      </p>
+        <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
+          <p style="padding: 0.25rem;">
+            <small><b>{{ post.title }}</b> : {{ post.excerpt }}</small>
+          </p>
+        </div>
       {% assign i = i - 1 %}
     {% else %}
       {% if !firstBlah %}

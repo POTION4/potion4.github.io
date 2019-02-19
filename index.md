@@ -29,7 +29,8 @@ title: Frame of 42yeah
 
 <div style="display: flex; justify-items: between; align-items: center; overflow-x: auto; padding: 2.5rem;">
   {% assign firstBlah = true %}
-  {% for i in (1..5) %}
+  {% assign j = 5 %}
+  {% for i in (1..j) %}
     {% if i >= site.posts.length %}
       {% break %}
     {% endif %}
@@ -49,7 +50,7 @@ title: Frame of 42yeah
   </p>
 </div>
 
-      {% assign i = i - 1 %}
+      {% assign j = j + 1 %}
     {% else %}
       {% if firstBlah == false %}
         {% assign firstBlah = true %}

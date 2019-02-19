@@ -37,41 +37,40 @@ title: Frame of 42yeah
     {% if post.blah %}
       {% if firstBlah %}
         {% assign firstBlah = false %}
-        <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
-          <h2>随口瞎吹</h2>
+<div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
+<h2>随口瞎吹</h2>
       {% endif %}
-        <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
-          <p style="padding: 0.25rem;">
-            <small><b>{{ post.title }}</b> : {{ post.excerpt }}</small>
-          </p>
-        </div>
+<div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
+<p style="padding: 0.25rem;">
+<small><b>{{ post.title }}</b> : {{ post.excerpt }}</small>
+</p>
+</div>
       {% assign i = i - 1 %}
     {% else %}
       {% if !firstBlah %}
         {% assign firstBlah = false %}
-        </div>
+</div>
       {% endif %}
-      not a blah
-      <a href="{{ post.url }}">
-        <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
-          <h2>{{ post.title }}</h2>
-          <p style="padding: 0.25rem;">
-            <small>{{ post.excerpt }}</small>
-          </p>
-        </div>
-      </a>
+<a href="{{ post.url }}">
+  <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
+<h2>{{ post.title }}</h2>
+<p style="padding: 0.25rem;">
+<small>{{ post.excerpt }}</small>
+</p>
+</div>
+</a>
     {% endif %}
   {% endfor %}
 
   {% if !firstBlah %}
     </div>
   {% endif %}
-  <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: dashed; border-width: 2px; max-width: 200px;" class="card">
-    <h2 style="color: #555;">还有很多……</h2>
-    <p style="padding: 0.25rem; color: #555;">
-      <small>前往相应的分类看吧！</small>
-    </p>
-  </div>
+<div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: dashed; border-width: 2px; max-width: 200px;" class="card">
+<h2 style="color: #555;">还有很多……</h2>
+<p style="padding: 0.25rem; color: #555;">
+<small>前往相应的分类看吧！</small>
+</p>
+</div>
 </div>
 
 ## 友情

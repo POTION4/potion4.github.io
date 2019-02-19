@@ -28,7 +28,8 @@ title: Frame of 42yeah
 我大概会在晚上才更新。以下是最新的推：
 
 <div style="display: flex; justify-items: between; align-items: center; overflow-x: auto; padding: 2.5rem;">
-  {% for post in site.posts limit:5 %}
+  {% for i in (1..5) %}
+    {% assign post = site.posts[i] %}
     <a href="{{ post.url }}">
       <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
         <h2>{{ post.title }}</h2>
@@ -72,12 +73,12 @@ title: Frame of 42yeah
 </div>
 
 
-## Portfolio 
+## Portfolio
 
 - 我是一个来自 [东莞理工学院](http://www.dgut.edu.cn/) 的学生。
 - 我非常想学图形学。
 - 我喜欢玩独立游戏，包括但不限于：
-	- Nethack 
+	- Nethack
 	- 一系列的经典偏硬核 Roguelike
 	- 一些可以多人游戏的游戏，**一般不包括 FPS**
 - 我喜欢玩 4X，但是我很菜
@@ -88,5 +89,5 @@ title: Frame of 42yeah
 - 我做过很多小作品，有兴趣的大佬可以发我邮箱问一下我
 - 我觉得可口可乐比百事可乐要好喝
 - 我觉得麦当劳比肯德基要好吃，虽然肯德基有奥尔良系列
-- 我觉得尊宝是所有 Pizza 当中最好吃的，第二是 Domino 
+- 我觉得尊宝是所有 Pizza 当中最好吃的，第二是 Domino
 - I love my girlfriend!

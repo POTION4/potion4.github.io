@@ -37,28 +37,36 @@ title: Frame of 42yeah
     {% if post.blah %}
       {% if firstBlah %}
         {% assign firstBlah = false %}
-        <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
-          <h2>随口瞎吹</h2>
+        {% raw %}
+          <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
+            <h2>随口瞎吹</h2>
+        {% endraw %}
       {% endif %}
+      {% raw %}
         <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
           <p style="padding: 0.25rem;">
             <small><b>{{ post.title }}</b> : {{ post.excerpt }}</small>
           </p>
         </div>
+      {% endraw %}
       {% assign i = i - 1 %}
     {% else %}
       {% if !firstBlah %}
         {% assign firstBlah = false %}
-        </div>
+        {% raw %}
+          </div>
+        {% endraw %}
       {% endif %}
-      <a href="{{ post.url }}">
-        <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
-          <h2>{{ post.title }}</h2>
-          <p style="padding: 0.25rem;">
-            <small>{{ post.excerpt }}</small>
-          </p>
-        </div>
-      </a>
+      {% raw %}
+        <a href="{{ post.url }}">
+          <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
+            <h2>{{ post.title }}</h2>
+            <p style="padding: 0.25rem;">
+              <small>{{ post.excerpt }}</small>
+            </p>
+          </div>
+        </a>
+      {% endraw %}
     {% endif %}
   {% endfor %}
 

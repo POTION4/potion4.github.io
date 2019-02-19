@@ -43,6 +43,7 @@ title: Frame of 42yeah
       <p style="padding: 0.25rem;">
         <small>{{ post.excerpt }}</small>
       </p>
+      {% assign i = i - 1 %}
     {% else %}
       {% if !firstBlah %}
         {% assign firstBlah = false %}

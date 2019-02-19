@@ -1,5 +1,5 @@
 ---
-title: 在CentOS 7搭建基于DNSCrypt和Nginx的DNS-over-HTTPS
+title: 在 CentOS 7 搭建基于 DNSCrypt 和 Nginx 的 DNS-over-HTTPS
 date: 2019-02-20 21:49:28
 categories: [ net ]
 ---

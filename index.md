@@ -36,7 +36,7 @@ title: Frame of 42yeah
     {% assign firstBlah = true %}
     {% if post.blah %}
       {% if firstBlah %}
-        {% firstBlah = false %}
+        {% assign firstBlah = false %}
         <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
       {% endif %}
       <h2>{{ post.title }}</h2>
@@ -45,7 +45,7 @@ title: Frame of 42yeah
       </p>
     {% else %}
       {% if !firstBlah %}
-        {% firstBlah = false %}
+        {% assign firstBlah = false %}
         </div>
       {% endif %}
       not a blah

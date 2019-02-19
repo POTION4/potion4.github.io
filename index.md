@@ -35,6 +35,7 @@ title: Frame of 42yeah
       {% break %}
     {% endif %}
     {% assign post = site.posts[i] %}
+    I am looking at {{ post }}
     {% if post.blah %}
       {% if firstBlah %}
         {% assign firstBlah = false %}

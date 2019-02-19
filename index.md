@@ -51,7 +51,7 @@ title: Frame of 42yeah
       {% endraw %}
       {% assign i = i - 1 %}
     {% else %}
-      {% if !firstBlah %}
+      {% if firstBlah == false %}
         {% assign firstBlah = true %}
         {% raw %}
           </div>
@@ -64,9 +64,7 @@ title: Frame of 42yeah
     <p style="padding: 0.25rem;">
       <small>{{ post.excerpt }}</small>
     </p>
-    a
   </div>
-  b
 </a>
 
     {% endif %}

@@ -27,6 +27,10 @@ title: Frame of 42yeah
 
 我大概会在晚上才更新。以下是最新的推：
 
+{% for post in site.posts %}
+- {{ post.title }}
+{% endfor %}
+
 <div style="display: flex; justify-items: between; align-items: center; overflow-x: auto; padding: 2.5rem;">
   {% assign firstBlah = true %}
   {% assign j = 5 %}
@@ -35,7 +39,6 @@ title: Frame of 42yeah
       {% break %}
     {% endif %}
     {% assign post = site.posts[i] %}
-    I am looking at {{ post }}
     {% if post.blah %}
       {% if firstBlah %}
         {% assign firstBlah = false %}

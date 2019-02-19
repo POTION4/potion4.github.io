@@ -42,13 +42,13 @@ title: Frame of 42yeah
             <h2>随口瞎吹</h2>
         {% endraw %}
       {% endif %}
-      {% raw %}
-        <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
-          <p style="padding: 0.25rem;">
-            <small><b>{{ post.title }}</b> : {{ post.excerpt }}</small>
-          </p>
-        </div>
-      {% endraw %}
+
+<div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
+  <p style="padding: 0.25rem;">
+    <small><b>{{ post.title }}</b> : {{ post.excerpt }}</small>
+  </p>
+</div>
+
       {% assign i = i - 1 %}
     {% else %}
       {% if firstBlah == false %}
@@ -70,7 +70,7 @@ title: Frame of 42yeah
     {% endif %}
   {% endfor %}
 
-  {% if !firstBlah %}
+  {% if firstBlah == false %}
     </div>
   {% endif %}
   <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: dashed; border-width: 2px; max-width: 200px;" class="card">

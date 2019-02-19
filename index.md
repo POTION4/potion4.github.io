@@ -29,15 +29,28 @@ title: Frame of 42yeah
 
 <div style="display: flex; justify-items: between; align-items: center; overflow-x: auto; padding: 2.5rem;">
   {% for i in (1..5) %}
+    {% if i >= site.posts.length %}
+      {% break %}
+    {% endif %}
     {% assign post = site.posts[i] %}
-    <a href="{{ post.url }}">
+    {% if post.blah %}
       <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
         <h2>{{ post.title }}</h2>
         <p style="padding: 0.25rem;">
           <small>{{ post.excerpt }}</small>
         </p>
       </div>
-    </a>
+    {% else %}
+      not a blah
+      <a href="{{ post.url }}">
+        <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
+          <h2>{{ post.title }}</h2>
+          <p style="padding: 0.25rem;">
+            <small>{{ post.excerpt }}</small>
+          </p>
+        </div>
+      </a>
+    {% endif %}
   {% endfor %}
   <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: dashed; border-width: 2px; max-width: 200px;" class="card">
     <h2 style="color: #555;">还有很多……</h2>

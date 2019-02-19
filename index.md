@@ -28,12 +28,12 @@ title: Frame of 42yeah
 我大概会在晚上才更新。以下是最新的推：
 
 <div style="display: flex; justify-items: between; align-items: center; overflow-x: auto; padding: 2.5rem;">
+  {% assign firstBlah = true %}
   {% for i in (1..5) %}
     {% if i >= site.posts.length %}
       {% break %}
     {% endif %}
     {% assign post = site.posts[i] %}
-    {% assign firstBlah = true %}
     {% if post.blah %}
       {% if firstBlah %}
         {% assign firstBlah = false %}

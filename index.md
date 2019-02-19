@@ -27,10 +27,6 @@ title: Frame of 42yeah
 
 我大概会在晚上才更新。以下是最新的推：
 
-{% for post in site.posts %}
-- {{ post.title }}
-{% endfor %}
-
 <div style="display: flex; justify-items: between; align-items: center; overflow-x: auto; padding: 2.5rem;">
   {% assign firstBlah = true %}
   {% assign j = 4 %}
@@ -43,14 +39,14 @@ title: Frame of 42yeah
       {% if firstBlah %}
         {% assign firstBlah = false %}
         {% raw %}
-          <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
+          <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: lightgray; border-style: solid; border-width: 1px; max-width: 400px;">
             <h2>随口瞎吹</h2>
         {% endraw %}
       {% endif %}
 
-<div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
+<div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 400px;" class="card">
   <p style="padding: 0.25rem;">
-    <small><b>{{ post.title }}</b> : {{ post.excerpt }}</small>
+    <small><b>{{ post.title }}</b> : {{ post.content }}</small>
   </p>
 </div>
 

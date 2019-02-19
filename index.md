@@ -33,8 +33,8 @@ title: Frame of 42yeah
 
 <div style="display: flex; justify-items: between; align-items: center; overflow-x: auto; padding: 2.5rem;">
   {% assign firstBlah = true %}
-  {% assign j = 5 %}
-  {% for i in (1..j) %}
+  {% assign j = 4 %}
+  {% for i in (0..j) %}
     {% if i >= site.posts.length %}
       {% break %}
     {% endif %}

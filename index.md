@@ -39,7 +39,7 @@ title: Frame of 42yeah
       {% if firstBlah %}
         {% assign firstBlah = false %}
         {% raw %}
-          <div style="margin-left: -1.5rem; border-color: lightgray; border-style: solid; border-width: 1px; max-width: 400px; padding: 1.0rem; min-width: 300px">
+          <div style="margin-left: -1.5rem; border-color: lightgray; border-style: solid; border-width: 1px; max-width: 400px; padding: 1.0rem; min-width: 250px">
             <h2>随口瞎吹</h2>
         {% endraw %}
       {% endif %}

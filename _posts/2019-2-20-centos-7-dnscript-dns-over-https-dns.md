@@ -10,9 +10,9 @@ DNS-over-HTTPS 是一个强大，但未成熟的技术。通过 SSL 传输原本
 
 # 注意：这是一篇转载自 [moon](https://www.moonsekai.xyz) 的文章。原文地址在 [这里](https://www.moonsekai.xyz/2019/02/13/%E5%9C%A8CentOS-7%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8EDNSCrypt%E7%9A%84DNS-over-HTTPS-DNS/) 。他已经授权了。
 
-# 为什么
+## 为什么
 从原理上来说，自己用免费证书搭的 DoH 没有任何实用价值。这个技术也尚处在实验性阶段，并没有广泛使用（如果您想玩玩稍微成熟一点的技术，可以去试试 DNS-over-TLS）。因为，搭这个东西完全是为了**好玩**。
-# 基本架构
+## 基本架构
 DoH 与传统的 DNS 查询相比最大的不同就是通过SSL发送和接收查询请求，他的架构是这样的：
 
 ![the Structure of DoH](/assets/DOH.svg)
@@ -32,7 +32,7 @@ DoH 与传统的 DNS 查询相比最大的不同就是通过SSL发送和接收�
 server_names = ['google' ,'cloudflare']
 ```
 之后，你应该可以正常运行 `dnscrypt-proxy` 。
-## 为 dnscrypt-proxy 编写服务
+### 为 dnscrypt-proxy 编写服务
 方便起见，我们将 `dnscrypt-proxy` 做成服务。
 
 创建文件 `/etc/systemd/system/dnscrypt.service` ，权限设置为 745 并写入这些内容：
@@ -56,7 +56,7 @@ WantedBy=multi-user.target
 
 至此，你已经在53端口搭建了一个正常的 DNS 服务器。
 
-# 安装 DoH Server
+## 安装 DoH Server
 现在已经有不同语言编写的 DoH Server。我们使用 Go 语言的版本。使用 `yum install -y go` 安装 Go 语言。 之后，按照 https://github.com/m13253/dns-over-https 的步骤编译安装DoH Server，如果你使用国外的服务器，这会十分迅速。
 
 当然，事情没这么简单。
@@ -74,7 +74,7 @@ upstream = [
 
 至此，你完成了 `DoH Server` 的配置。
 
-# Nginx
+## Nginx
 之后，我们配置最后一部分： `nginx` 。如果你还未安装 `nginx` ，使用 `yum install -y nginx` 安装。
 ## 配置HTTPS
 如果你之前已经为 `nginx` 配置过 HTTPS ，可以跳过这一部分。如果没有，推荐你使用 `certbot` 的一键脚本。依次键入下列命令来安装。
@@ -128,12 +128,12 @@ location /dns-query {
 ```
 最后，在 `server` 作用域前，插入代码，使它变成这样：
 ```shell
-# 插入 upstream 作用域。
+## 插入 upstream 作用域。
 upstream dns_backend {
          server [::1]:8053;
          # 当然，如果你的服务器没有 ipv6，在这里需要使用 ipv4 地址，原理是一样的。
 }
-# 以下为原有内容。
+## 以下为原有内容。
 server {
     server_name www.example.com; # managed by Certbot
 ```
@@ -146,7 +146,7 @@ server {
 
 至此，恭喜你，你已经搭建起了一个 `DoH Server`，可以试着使用了。
 
-# 那么，我怎么知道他工作正常呢
+## 那么，我怎么知道他工作正常呢
 有很多方法，就目前来说，最方便的方式是使用 `Firefox` 。你需要在 `about config` 中修改这些内容：
 
 network.trr.mode ：  3 ， 使用3将强制使用 DoH 解析，方便测试
@@ -163,15 +163,19 @@ network.trr.bootstrapAddress : 123.123.123.123， 你的服务器地址， 说�
 
 恭喜你，你刚刚体验了（虽然目前处于高度实验状态）但是很新的技术，祝你玩的愉快。
 
-# 后记
+## 后记
 搭完这个东西玩了 1 个小时后，我重新打开了 CloudFlare 的 CDN。这也意味着之前做的东西都没用了，几个服务也关掉了。所以可能是浪费了时间？然而并不这么觉得。
 
 至少过程非常开心，而且也有学到很多东西，这也就是所谓 "折腾" 的乐趣所在吧。
 
-# 参考资料
+## 参考资料
 这些文章为我提供了巨大的帮助，感谢他们：
 https://www.aaflalo.me/2018/10/tutorial-setup-dns-over-https-server/
 
 https://certbot.eff.org/lets-encrypt/centosrhel7-nginx
 
 https://facebookexperimental.github.io/doh-proxy/tutorials/nginx-dohhttpproxy-unbound-centos7.html
+
+## 转者注（也就是我）
+
+我喜欢这种 Just For Fun 的精神！还有这看起来的确挺好玩儿的，我就转了

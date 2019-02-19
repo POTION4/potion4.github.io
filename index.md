@@ -33,14 +33,21 @@ title: Frame of 42yeah
       {% break %}
     {% endif %}
     {% assign post = site.posts[i] %}
+    {% assign firstBlah = true %}
     {% if post.blah %}
-      <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
-        <h2>{{ post.title }}</h2>
-        <p style="padding: 0.25rem;">
-          <small>{{ post.excerpt }}</small>
-        </p>
-      </div>
+      {% if firstBlah %}
+        {% firstBlah = false %}
+        <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
+      {% endif %}
+      <h2>{{ post.title }}</h2>
+      <p style="padding: 0.25rem;">
+        <small>{{ post.excerpt }}</small>
+      </p>
     {% else %}
+      {% if !firstBlah %}
+        {% firstBlah = false %}
+        </div>
+      {% endif %}
       not a blah
       <a href="{{ post.url }}">
         <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">

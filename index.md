@@ -29,9 +29,8 @@ title: Frame of 42yeah
 
 <div style="display: flex; justify-items: between; align-items: center; overflow-x: auto; padding: 2.5rem;">
   {% assign firstBlah = true %}
-  {% increment j | remove "0123456789" %} {% increment j | remove "0123456789" %} {% increment j | remove "0123456789" %} {% increment j | remove "0123456789" %}
-  {% for i in (0..200) %}
-    {% if i >= site.posts.length or i > j %}
+  {% for i in (0..4) %}
+    {% if i >= site.posts.length %}
       {% break %}
     {% endif %}
     {% assign post = site.posts[i] %}
@@ -46,11 +45,10 @@ title: Frame of 42yeah
 
 <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
   <p style="padding: 0.25rem;">
-    <small><b>{{ post.title }}</b> : {{ post.blah }}</small>
+    <small><b>{{ post.title }}</b> : {{ post.content }}</small>
   </p>
 </div>
 
-      {% increment j | remove "0123456789" %}
     {% else %}
       {% if firstBlah == false %}
         {% assign firstBlah = true %}

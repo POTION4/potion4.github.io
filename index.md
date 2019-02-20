@@ -44,7 +44,7 @@ title: Frame of 42yeah
       {% endif %}
 
   <p style="padding: 0.25rem;">
-    <small><b>{{ post.title }}</b> : {{ post.content }}</small>
+    <small><b>{{ post.title }}</b> : {{ post.blah }}</small>
   </p>
 
     {% else %}

@@ -1,8 +1,6 @@
 ---
 title: 第三次瞎吹
 categories: [ blah ]
-blah: true
+blah: 尊宝披萨真好吃
 layout: post
 ---
-
-人之所以为人，是因为他就是人。

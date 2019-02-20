@@ -29,7 +29,7 @@ title: Frame of 42yeah
 
 <div style="display: flex; justify-items: between; align-items: center; overflow-x: auto; padding: 2.5rem;">
   {% assign firstBlah = true %}
-  {% increment j %} {% increment j %} {% increment j %} {% increment j %}
+  {% assign j = 4 %}
   {% for i in (0..200) %}
     {% if i >= site.posts.length or i > j %}
       {% break %}
@@ -46,11 +46,11 @@ title: Frame of 42yeah
 
 <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
   <p style="padding: 0.25rem;">
-    <small><b>{{ post.title }}</b> : {{ post.content }}</small>
+    <small><b>{{ post.title }}</b> : {{ post.blah }}</small>
   </p>
 </div>
 
-      {% increment j %}
+      {% j = j + 1 %}
     {% else %}
       {% if firstBlah == false %}
         {% assign firstBlah = true %}

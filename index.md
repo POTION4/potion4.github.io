@@ -43,11 +43,9 @@ title: Frame of 42yeah
         {% endraw %}
       {% endif %}
 
-<div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
   <p style="padding: 0.25rem;">
     <small><b>{{ post.title }}</b> : {{ post.content }}</small>
   </p>
-</div>
 
     {% else %}
       {% if firstBlah == false %}

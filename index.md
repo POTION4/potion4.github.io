@@ -29,7 +29,7 @@ title: Frame of 42yeah
 
 <div style="display: flex; justify-items: between; align-items: center; overflow-x: auto; padding: 2.5rem;">
   {% assign firstBlah = true %}
-  {% assign j = 4 %}
+  {% increment j | remove "0123456789" %} {% increment j | remove "0123456789" %} {% increment j | remove "0123456789" %} {% increment j | remove "0123456789" %}
   {% for i in (0..200) %}
     {% if i >= site.posts.length or i > j %}
       {% break %}
@@ -50,7 +50,7 @@ title: Frame of 42yeah
   </p>
 </div>
 
-      {% j = j + 1 %}
+      {% increment j | remove "0123456789" %}
     {% else %}
       {% if firstBlah == false %}
         {% assign firstBlah = true %}

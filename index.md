@@ -51,6 +51,7 @@ title: Frame of 42yeah
 </div>
 
       {% assign j = j + 1 %}
+      {{ j }}
     {% else %}
       {% if firstBlah == false %}
         {% assign firstBlah = true %}

@@ -97,7 +97,7 @@ window.onload = function() {
     
     schedule.innerHTML = sheetBody
 
-    fetch("http://" + location.hostname + ":8080/data.json").then(function(resp) {
+    fetch("https://" + location.hostname + "/assets/data.json").then(function(resp) {
         resp.json().then(function(json) {
             for (let day = 0; day < 7; day++) {
                 for (let cls = 0; cls < 10; cls++) {

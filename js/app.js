@@ -1,7 +1,9 @@
 "use strict"
 
 
+var onload = window.onload 
 window.onload = function() {
+    if (onload) { onload() }
     const quote = document.getElementById("quote")
 
     if (quote) {

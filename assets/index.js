@@ -79,7 +79,9 @@ function isFree(text) {
 }
 
 
+var onload = window.onload 
 window.onload = function() {
+    if (onload) { onload() }
     const schedule = document.getElementById("schedule")
 
     // there are seven days a week, and 9 classes each. So watch!

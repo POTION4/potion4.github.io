@@ -79,8 +79,7 @@ function isFree(text) {
 }
 
 
-var onload = window.onload 
-window.onload = function() {
+setTimeout(function() {
     if (onload) { onload() }
     const schedule = document.getElementById("schedule")
 
@@ -115,4 +114,4 @@ window.onload = function() {
             update()
         })
     })
-}
+}, 2000)

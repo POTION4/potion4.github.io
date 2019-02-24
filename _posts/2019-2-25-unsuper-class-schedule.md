@@ -9,6 +9,8 @@ layout: post
 
 ## 开始
 
+注意：因为太懒，所以我直接用了 `setTimeout` 。希望你两秒之内能加载好下面那个表！
+
 <script src="/assets/index.js"></script>
 <link rel="stylesheet" href="/assets/index.css">
 

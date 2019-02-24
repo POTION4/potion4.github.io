@@ -16,8 +16,8 @@ layout: post
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>课程表</title>
-        <script src="assets/index.js"></script>
-        <link rel="stylesheet" href="assets/index.css">
+        <script src="/assets/index.js"></script>
+        <link rel="stylesheet" href="/assets/index.css">
     </head>
     <body>
         <p>这是一个课程表，很明显我只想要他来记录我自己的课程，所以如果你不是 17 计科 1 班的，就算了</p>

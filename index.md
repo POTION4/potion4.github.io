@@ -4,7 +4,7 @@ title: Frame of 42yeah
 
 ## Hark, visitor!
 
-欢迎来到 [42yeah](https://github.com/POTION4) 的个人博客！如果想知道更多关于我的消息，往下滚到 Portfolio 即可。
+欢迎来到 [42yeah](https://github.com/POTION4) 的个人博客！如果想知道更多关于我的消息，往下滚到关于我就行了。
 
 <div class="paperi floats stick">
   <h2>所有分类</h2>
@@ -28,33 +28,12 @@ title: Frame of 42yeah
 我大概会在晚上才更新。以下是最新的推：
 
 <div style="display: flex; justify-items: between; align-items: center; overflow-x: auto; padding: 2.5rem;">
-  {% assign firstBlah = true %}
-  {% for i in (0..4) %}
+  {% for i in (0..6) %}
     {% if i >= site.posts.length %}
       {% break %}
     {% endif %}
     {% assign post = site.posts[i] %}
-    {% if post.blah %}
-      {% if firstBlah %}
-        {% assign firstBlah = false %}
-        {% raw %}
-          <div style="margin-left: -1.5rem; border-color: lightgray; border-style: solid; border-width: 1px; max-width: 400px; padding: 1.0rem; min-width: 200px">
-            <h2>随口瞎吹</h2>
-        {% endraw %}
-      {% endif %}
-
-  <p style="padding: 0.25rem;">
-    <small><b>{{ post.title }}</b> : {{ post.blah }}</small>
-  </p>
-
-    {% else %}
-      {% if firstBlah == false %}
-        {% assign firstBlah = true %}
-        {% raw %}
-          </div>
-        {% endraw %}
-      {% endif %}
-
+    
 <a href="{{ post.url }}">
   <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: solid; border-width: 1px; max-width: 200px;" class="card">
     <h2>{{ post.title }}</h2>
@@ -64,12 +43,8 @@ title: Frame of 42yeah
   </div>
 </a>
 
-    {% endif %}
   {% endfor %}
 
-  {% if firstBlah == false %}
-    </div>
-  {% endif %}
   <div style="padding: 0px px 0px 5px; margin-left: -1.5rem; border-color: black; border-style: dashed; border-width: 2px; max-width: 200px;" class="card">
     <h2 style="color: #555;">还有很多……</h2>
     <p style="padding: 0.25rem; color: #555;">
@@ -104,8 +79,7 @@ title: Frame of 42yeah
 </div>
 
 
-## Portfolio
-
+<detail> <summary>## 关于我</summary>
 - 我是一个来自 [东莞理工学院](http://www.dgut.edu.cn/) 的学生。
 - 我非常想学图形学。
 - 我喜欢玩独立游戏，包括但不限于：
@@ -122,3 +96,4 @@ title: Frame of 42yeah
 - 我觉得麦当劳比肯德基要好吃，虽然肯德基有奥尔良系列
 - 我觉得尊宝是所有 Pizza 当中最好吃的，第二是 Domino
 - I love my girlfriend!
+</detail>

@@ -79,7 +79,7 @@ title: Frame of 42yeah
 </div>
 
 
-<detail> <summary>## 关于我</summary>
+<details> <summary>## 关于我</summary>
 - 我是一个来自 [东莞理工学院](http://www.dgut.edu.cn/) 的学生。
 - 我非常想学图形学。
 - 我喜欢玩独立游戏，包括但不限于：
@@ -96,4 +96,4 @@ title: Frame of 42yeah
 - 我觉得麦当劳比肯德基要好吃，虽然肯德基有奥尔良系列
 - 我觉得尊宝是所有 Pizza 当中最好吃的，第二是 Domino
 - I love my girlfriend!
-</detail>
+</details>

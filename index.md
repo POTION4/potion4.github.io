@@ -87,7 +87,7 @@ title: Frame of 42yeah
     <ul>
       <li>Nethack</li>
       <li>一系列的经典偏硬核 Roguelike</li>
-      <li>一些可以多人游戏的游戏，**一般不包括 FPS**</li>
+      <li>一些可以多人游戏的游戏，<b>一般不包括 FPS</b></li>
     </ul>
   </li>
   <li>我喜欢玩 4X，但是我很菜</li>

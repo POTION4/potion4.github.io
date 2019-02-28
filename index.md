@@ -79,21 +79,26 @@ title: Frame of 42yeah
 </div>
 
 
-<details> <summary><h2>关于我</h2></summary>
-- 我是一个来自 [东莞理工学院](http://www.dgut.edu.cn/) 的学生。
-- 我非常想学图形学。
-- 我喜欢玩独立游戏，包括但不限于：
-	- Nethack
-	- 一系列的经典偏硬核 Roguelike
-	- 一些可以多人游戏的游戏，**一般不包括 FPS**
-- 我喜欢玩 4X，但是我很菜
-- 我学过一系列的程序语言，但大部分都是浅尝辄止，没啥技术
-- 我支持 LGBT ，虽然我本人是直的
-- 我不喜欢吃牛肉丸，干蒸，烧卖，虾饺，云吞，^(?!.\*(韭菜)).\*饺子，牛奶，重芝士，etc……
-- 我的邮箱是 [potion@live.cn](mailto:potion@live.cn)
-- 我做过很多小作品，有兴趣的大佬可以发我邮箱问一下我
-- 我觉得可口可乐比百事可乐要好喝
-- 我觉得麦当劳比肯德基要好吃，虽然肯德基有奥尔良系列
-- 我觉得尊宝是所有 Pizza 当中最好吃的，第二是 Domino
-- I love my girlfriend!
+<details> <summary><h2 style="display: inline">关于我</h2></summary>
+<ul>
+<li> 我是一个来自 [东莞理工学院](http://www.dgut.edu.cn/) 的学生。</li>
+<li> 我非常想学图形学。</li>
+<li> 
+  我喜欢玩独立游戏，包括但不限于：
+  <ul>
+	<li> Nethack</li>
+	<li> 一系列的经典偏硬核 Roguelike</li>
+	<li> 一些可以多人游戏的游戏，**一般不包括 FPS**</li>
+  </ul>
+</li>
+<li> 我喜欢玩 4X，但是我很菜</li>
+<li> 我学过一系列的程序语言，但大部分都是浅尝辄止，没啥技术</li>
+<li> 我支持 LGBT ，虽然我本人是直的</li>
+<li> 我不喜欢吃牛肉丸，干蒸，烧卖，虾饺，云吞，^(?!.\*(韭菜)).\*饺子，牛奶，重芝士，etc……</li>
+<li> 我的邮箱是 [potion@live.cn](mailto:potion@live.cn)</li>
+<li> 我做过很多小作品，有兴趣的大佬可以发我邮箱问一下我</li>
+<li> 我觉得可口可乐比百事可乐要好喝</li>
+<li> 我觉得麦当劳比肯德基要好吃，虽然肯德基有奥尔良系列</li>
+<li> 我觉得尊宝是所有 Pizza 当中最好吃的，第二是 Domino</li>
+<li> I love my girlfriend!</li>
 </details>

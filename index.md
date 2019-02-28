@@ -79,7 +79,7 @@ title: Frame of 42yeah
 </div>
 
 
-<details> <summary>## 关于我</summary>
+<details> <summary><h2>关于我</h2></summary>
 - 我是一个来自 [东莞理工学院](http://www.dgut.edu.cn/) 的学生。
 - 我非常想学图形学。
 - 我喜欢玩独立游戏，包括但不限于：

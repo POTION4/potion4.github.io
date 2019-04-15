@@ -260,6 +260,18 @@ a:active {
   background-color: white;
 }
 
+h1:after, h2:after, h3:after, h4:after, h5:after {
+  float: right;
+  content: "¶";
+  color: #ffcf88;
+}
+
+h1.no-pilcrow:after, h2.no-pilcrow:after, h3.no-pilcrow:after, h4.no-pilcrow:after, h5.no-pilcrow:after {
+  float: right;
+  content: "";
+  color: #ffcf88;
+}
+
 /* Those are highlight colors */
 .highlight .c { color: #008800; font-style: italic } /* Comment */
 .highlight .err { border: 1px solid #FF0000 } /* Error */

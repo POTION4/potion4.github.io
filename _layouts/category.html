@@ -3,8 +3,8 @@
   {% include headers.html %}
   <body>
     <div id="contentPane" class="huge-page real main">
-      <h1><a href="/">Frame of 42yeah</a></h1>
-      <h2>{{ page.category }}</h2>
+      <h1 class="no-pilcrow"><a href="/">Frame of 42yeah</a></h1>
+      <h2 class="no-pilcrow">{{ page.category }}</h2>
       <hr />
 
       <section>
@@ -15,7 +15,7 @@
           <div class="d-flex justify left block-mum" style="">
             <div class="block white">
               <div>
-                <h3 style="background-color: orange; color: white;">{{ post.title }}</h3>
+                <h3 class="no-pilcrow" style="background-color: orange; color: white;">{{ post.title }}</h3>
                 {{ post.excerpt }}
                 <br />
                 <a href="{{ post.url }}" class="big-btn outline">阅读</a>

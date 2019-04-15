@@ -34,6 +34,10 @@ html {
   .gnome {
     display: none;
   }
+
+  .block-mum {
+    width: 100%;
+  }
 }
 
 @media only screen and (min-width: 1000px) {
@@ -44,6 +48,10 @@ html {
     padding: 0 10rem;
     margin-top: 0;
     margin-bottom: 0;
+  }
+
+  .block-mum {
+    width: 25%;
   }
 
   .huge-page {

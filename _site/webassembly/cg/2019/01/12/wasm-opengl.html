@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="msvalidate.01" content="D1B532AF972A1AB6C3525C904A9AC816" />
+  <meta name="google-site-verification" content="-ujy_zWUIaX-QJ4vdUYfXThyZgr_KqsU0lL611rqsy8" />
+  <title>WebAssembly 中的 OpenGL(ES?)</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/app.js"></script>
+</head>
+
+  <body>
+    <div id="contentPane" class="huge-page real main">
+      <h1><a href="/">Frame of 42yeah</a></h1>
+      <h2>WebAssembly 中的 OpenGL(ES?)</h2>
+      <hr />
+      <section>
+        <div style="margin-bottom: -25px">
+  <div id='MicrosoftTranslatorWidget' class='Dark' style='color:white;background-color:inherit;height:30px;'></div>
+</div>
+
+<script type='text/javascript'>
+  setTimeout(function(){
+    {var s=document.createElement('script');s.type='text/javascript';s.charset='UTF-8';s.src=((location && location.href && location.href.indexOf('https') == 0)?'https://ssl.microsofttranslator.com':'http://www.microsofttranslator.com')+'/ajax/v3/WidgetV3.ashx?siteData=ueOIGRSKkd965FeEGM5JtQ**&ctf=False&ui=true&settings=Manual&from=';var p=document.getElementsByTagName('head')[0]||document.documentElement;p.insertBefore(s,p.firstChild); }
+  },0);
+</script>
+<script type='text/javascript' src='//www.bing.com/widget/bootstrap.js' data-id='cc2030a35e7345a1940e909993402b13' data-version='1.0b' data-autosnapshot='false' async></script>
+        <p><strong>注意，看这个可能需要有一定的 OpenGL/WebGL 基础。</strong></p>
+
+<p>OpenGL 是一个计算机图形学的库。更确切的说（防刚），是一套 specification 。通过 OpenGL 给的各种接口你可以绘制出各种炫酷玩意儿。对这个有兴趣的可以来 <a href="https://learnopengl.com">这里</a> 学一下。强烈推荐！！</p>
+
+<p>WebAssembly 可以和 Javascript 互相通讯，进而调整 DOM 中的内容。所以，很明显，用 C/C++ 写 OpenGL/ES 代码，然后把内容显示在网页上，再也不是不可能了！！！</p>
+
+<h2 id="马上开始">马上开始！！</h2>
+<p>我们现在要用多一个头文件了。除了 <code class="highlighter-rouge">emscripten.h</code> 之外，我们还要 <code class="highlighter-rouge">#include</code> 多一个 <a href="http://kripken.github.io/emscripten-site/docs/api_reference/html5.h"><code class="highlighter-rouge">emscripten/html5.h</code></a> ，这样我们才有 WebGL 的各种接口。废话少说，我们可以马上看一下我们的 <code class="highlighter-rouge">include</code> 模版：</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;emscripten.h&gt;
+#include &lt;GLES3/gl2.h&gt;
+#include &lt;EGL/egl.h&gt;
+#include &lt;emscripten/html5.h&gt;
+</span></code></pre></div></div>
+
+<ul>
+  <li>第一条 include 还是原来的配方，还是熟悉的味道。</li>
+  <li>第二条我们 include 了 GLES2 的头文件。</li>
+  <li>第三条我们 include 了 EGL。</li>
+  <li>第四条我们 include 了上文提及的 <code class="highlighter-rouge">emscripten/html5.h</code>。</li>
+</ul>
+
+<p>有了这一堆头文件，我们至少可以画出一个三角形了。所以我们的下一步是。。。</p>
+
+<h2 id="创建上下文">创建上下文！！</h2>
+<p>如果有一点 OpenGL 家族的基础的话，就会知道 <strong>在创建 context 之前，画什么都是没用的。</strong> 因此，我们要先创建一个 Context ，接下来才能愉快的玩耍。</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">EmscriptenWebGLContextAttributes</span> <span class="n">attrs</span><span class="p">;</span>
+  <span class="n">attrs</span><span class="p">.</span><span class="n">explicitSwapControl</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">attrs</span><span class="p">.</span><span class="n">depth</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">attrs</span><span class="p">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">attrs</span><span class="p">.</span><span class="n">antialias</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">attrs</span><span class="p">.</span><span class="n">majorVersion</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="n">attrs</span><span class="p">.</span><span class="n">minorVersion</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="n">EMSCRIPTEN_WEBGL_CONTEXT_HANDLE</span> <span class="n">context</span> <span class="o">=</span> <span class="n">emscripten_webgl_create_context</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">attrs</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>我不喜欢 emscripten 的命名的一个地方就是名字都长的跟串儿似的。看看别人 OpenGL 命名的多好，都是 <code class="highlighter-rouge">gl啥啥啥</code> 的。</p>
+
+<p>跑题了。咱可以看得见，首先我们搞了个 attrs ，然后给里面的一堆东西赋了个值。看起来贼多对不？没事，我们一个个看（里面有一部分可能你已经知道是什么了）：</p>
+<ul>
+  <li><code class="highlighter-rouge">attrs.explicitSwapControl = 0</code>: 如果知道 canvas ，你就会知道在 canvas 中，他更新一桢是 “隐式更新” 的。啥意思呢？就是他会猜你这一桢画好了没，如果画好了，就直接交换缓冲。我们在这里设成了 0，也就是就让他这么做；当然我们也可以设成 1。如果设置成了 1 的话，那交换缓冲这个步骤就需要我们手动完成：<a href="https://github.com/kripken/emscripten/pull/5581/files#diff-16eca2b70acff1fd624285ab9390a9c7R1954">每一桢绘制好之后加多一句 <code class="highlighter-rouge">emscripten_webgl_commit_frame()</code></a> 。</li>
+  <li><code class="highlighter-rouge">attrs.depth = 1</code>: 跟 <a href="https://learnopengl.com/Advanced-OpenGL/Depth-testing"><code class="highlighter-rouge">glEnable(GL_DEPTH_TEST)</code></a> 大概一个意思。</li>
+  <li><code class="highlighter-rouge">attrs.stencil = 1</code>: 跟 <a href="https://learnopengl.com/Advanced-OpenGL/Stencil-testing"><code class="highlighter-rouge">glEnable(GL_STENCIL_TEST)</code></a> 大概一个意思。</li>
+  <li><code class="highlighter-rouge">attrs.antialias = 1</code>: 跟 <a href="https://learnopengl.com/Advanced-OpenGL/Anti-Aliasing"><code class="highlighter-rouge">glEnable(GL_MULTISAMPLE)</code></a> 大概一个意思，就是多重采样嘛。</li>
+  <li><code class="highlighter-rouge">attrs.majorVersion</code> 和 <code class="highlighter-rouge">attrs.minorVersion</code>: GLES 的版本。其实为什么我要用 2.0 呢？不是有 GLES3 吗？的确有，但是我试过了，不行。。。我 include 了 GLES3/gl3.h ，然后编译了，创建不了 context 。2 倒是直接 OK 了。很气。</li>
+</ul>
+
+<p>接下来我们往下看，就看到创建 context 的步骤了:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">EMSCRIPTEN_WEBGL_CONTEXT_HANDLE</span> <span class="n">context</span> <span class="o">=</span> <span class="n">emscripten_webgl_create_context</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">attrs</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>我们可以看到，命名仍然是长的一批。但是没关系，这里大概可以看得懂了吧：我们通过 <code class="highlighter-rouge">emscripten_webgl_create_context</code> 创建了一个上下文。</p>
+
+<p>在这个创建上下文的函数里面，有两个参数。第一个参数我用了 0 ，<a href="http://kripken.github.io/emscripten-site/docs/api_reference/html5.h#c.emscripten_webgl_create_context">但其实这里可以填任意 canvas 的 ID; 如果为 0 ，就会用在 Javascript 里面 <strong>预先由你</strong> 定义好的变量：<code class="highlighter-rouge">Module.canvas</code> </a>。创建完毕之后的 context ，其实就是个 int ，只是被 <code class="highlighter-rouge">typedef</code> 了一下而已。他应该返回一个正数，如果返回的是 0 ，那就是意味着创建失败了；如果返回的是负数，那你就可以通过把它当成 <a href="http://kripken.github.io/emscripten-site/docs/api_reference/html5.h#c.EMSCRIPTEN_RESULT"><code class="highlighter-rouge">EMSCRIPTEN_RESULT</code></a> 然后 switch 这堆东西来看看是什么地方出错了。</p>
+
+<p>当然咯，创建好之后还要把这个 context 设置成当前的 context 。我们只需要这样：</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">emscripten_webgl_make_context_current</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>就可以了。</p>
+
+<h2 id="测试">测试！</h2>
+<p>要测试你是不是成功了非常简单，清一下屏幕就可以了：</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">glClearColor</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">3</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">2</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="n">f</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">);</span>
+<span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>然后。。。我发现我好像一直都忘了说编译！！</p>
+
+<h2 id="编译">编译！</h2>
+<p>编译带 GL 的规则跟平时的略有不同，我直接上命令了，方便大家：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>emcc main.c <span class="nt">-o</span> main.js <span class="nt">-s</span> <span class="nv">WASM</span><span class="o">=</span>1 <span class="nt">-s</span> <span class="nv">EXTRA_EXPORTED_RUNTIME_METHODS</span><span class="o">=</span><span class="s2">"[ 'ccall', 'cwrap' ]"</span> <span class="nt">-s</span> <span class="nv">FULL_ES2</span><span class="o">=</span>1 <span class="nt">-s</span> <span class="nv">USE_WEBGL2</span><span class="o">=</span>1
+</code></pre></div></div>
+
+<p>之前的那一堆都差不多是一样的；我加上 <code class="highlighter-rouge">EXTRA_EXPORTED_RUNTIME_METHODS</code> 只是为了防止不时之需，不一定需要。但看看后面那两句：</p>
+
+<p><code class="highlighter-rouge">-s FULL_ES2=1 -s USE_WEBGL2=1</code></p>
+
+<p>这两句才是这编译能过的主要原因。我们可以看得出我们这里在用 GLES2/WebGL2 。然后按下回车，他大！我们编译好啦！</p>
+
+<h2 id="回到测试">回到测试！</h2>
+<p>在浏览器里打开，我们应该能够看见一个屎黄色的矩形：</p>
+
+<p><img src="/assets/shitty.png" alt="屎黄色" /></p>
+
+<h2 id="成功">成功！！！！</h2>
+<p>这就证明我们成功了！！为了再吸引一下你们的兴趣，给你看看我之后写好的三角形（来到这，诸位学过的应该都已经会了吧）:</p>
+
+<p>对了，说多一句，因为有点怕这个三角形会卡爆你的浏览器（真的会吗？？？），所以我弄了个按钮，点了才会开始主循环哦：</p>
+
+<p>对了，再说多一句，点了之后 Javascript 控制台可能会抛出个异常，没事，他只是在模拟真正的主循环而已：</p>
+
+<p><a href="javascript:_beginMainLoop()">开始！</a></p>
+<canvas width="480px" height="320px" style="max-width: 100%;" id="canvas">
+<p id="message"></p>
+
+<script>
+  var Module = {
+    canvas: document.getElementById("canvas")
+  }
+</script>
+<script src="/assets/triangle.js"></script>
+</canvas>
+
+      </section>
+      <h2 id="评论区">评论区</h2>
+<div id="disqus_thread" style="font-size: 12px !important;"></div>
+<script>
+  var disqus_config = function () {
+    this.page.url = "https://potion4.github.io/webassembly/cg/2019/01/12/wasm-opengl.html";
+    this.page.identifier = "WebAssembly 中的 OpenGL(ES?)";
+  };
+
+  (function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://frame-of-42yeah.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    </div>
+  </body>
+</html>

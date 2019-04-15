@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="msvalidate.01" content="D1B532AF972A1AB6C3525C904A9AC816" />
+  <meta name="google-site-verification" content="-ujy_zWUIaX-QJ4vdUYfXThyZgr_KqsU0lL611rqsy8" />
+  <title>在 CentOS 7 搭建基于 DNSCrypt 和 Nginx 的 DNS-over-HTTPS</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/app.js"></script>
+</head>
+
+  <body>
+    <div id="contentPane" class="huge-page real main">
+      <h1><a href="/">Frame of 42yeah</a></h1>
+      <h2>在 CentOS 7 搭建基于 DNSCrypt 和 Nginx 的 DNS-over-HTTPS</h2>
+      <hr />
+      <section>
+        <div style="margin-bottom: -25px">
+  <div id='MicrosoftTranslatorWidget' class='Dark' style='color:white;background-color:inherit;height:30px;'></div>
+</div>
+
+<script type='text/javascript'>
+  setTimeout(function(){
+    {var s=document.createElement('script');s.type='text/javascript';s.charset='UTF-8';s.src=((location && location.href && location.href.indexOf('https') == 0)?'https://ssl.microsofttranslator.com':'http://www.microsofttranslator.com')+'/ajax/v3/WidgetV3.ashx?siteData=ueOIGRSKkd965FeEGM5JtQ**&ctf=False&ui=true&settings=Manual&from=';var p=document.getElementsByTagName('head')[0]||document.documentElement;p.insertBefore(s,p.firstChild); }
+  },0);
+</script>
+<script type='text/javascript' src='//www.bing.com/widget/bootstrap.js' data-id='cc2030a35e7345a1940e909993402b13' data-version='1.0b' data-autosnapshot='false' async></script>
+        <p>DNS-over-HTTPS 是一个强大，但未成熟的技术。通过 SSL 传输原本未经加密的 DNS 查询，使过程更加安全。已经有许多关于原理的文章，在这里我们尝试在 CentOS 7 上搭建一个后端基于 DNSCrypt 的 DoH。</p>
+
+<p>如果您想玩玩最新技术，可以试着自己做一做。
+<!--more--></p>
+
+<h1 id="注意这是一篇转载自-moon-的文章原文地址在-这里-他已经授权了">注意：这是一篇转载自 <a href="https://www.moonsekai.xyz">moon</a> 的文章。原文地址在 <a href="https://www.moonsekai.xyz/2019/02/13/%E5%9C%A8CentOS-7%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8EDNSCrypt%E7%9A%84DNS-over-HTTPS-DNS/">这里</a> 。他已经授权了。</h1>
+
+<h2 id="为什么">为什么</h2>
+<p>从原理上来说，自己用免费证书搭的 DoH 没有任何实用价值。这个技术也尚处在实验性阶段，并没有广泛使用（如果您想玩玩稍微成熟一点的技术，可以去试试 DNS-over-TLS）。因为，搭这个东西完全是为了<strong>好玩</strong>。</p>
+<h2 id="基本架构">基本架构</h2>
+<p>DoH 与传统的 DNS 查询相比最大的不同就是通过SSL发送和接收查询请求，他的架构是这样的：</p>
+
+<p><img src="/assets/DOH.svg" alt="the Structure of DoH" /></p>
+
+<p>就像图上所显示的，我们需要配置 DNSCrypt，DOH-Server与Nginx。</p>
+<h1 id="安装-dnscrypt-proxy">安装 dnscrypt-proxy</h1>
+<p>这一部分我们配置一个常规的 DNS Server。</p>
+
+<p>这篇 Blog 使用 DNSCrypt 作为后端，确保安全性的同时也更加省事，如果您愿意的话，用万能的 Bind 想想办法也是没问题的。</p>
+<h2 id="配置-dnscrypt-proxy">配置 dnscrypt-proxy</h2>
+<p>为了省事，我们使用github的预编译包，你可以在<a href="https://github.com/jedisct1/dnscrypt-proxy/releases">这里</a>下载。</p>
+
+<p>之后，需要进行一些配置。重命名 <code class="highlighter-rouge">example-dnscrypt-proxy.toml</code> 为 <code class="highlighter-rouge">dnscrypt-proxy.toml</code>，使配置文件生效。
+之后，编辑 <code class="highlighter-rouge">dnscrypt-proxy.toml</code> ,找到 <code class="highlighter-rouge">#server_names</code> 行，去掉注释，并选择几个你喜欢的DNS Provider，改成类似这样：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server_names <span class="o">=</span> <span class="o">[</span><span class="s1">'google'</span> ,<span class="s1">'cloudflare'</span><span class="o">]</span>
+</code></pre></div></div>
+<p>之后，你应该可以正常运行 <code class="highlighter-rouge">dnscrypt-proxy</code> 。</p>
+<h3 id="为-dnscrypt-proxy-编写服务">为 dnscrypt-proxy 编写服务</h3>
+<p>方便起见，我们将 <code class="highlighter-rouge">dnscrypt-proxy</code> 做成服务。</p>
+
+<p>创建文件 <code class="highlighter-rouge">/etc/systemd/system/dnscrypt.service</code> ，权限设置为 745 并写入这些内容：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Unit]
+Description=DNSCrypt Service
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+PIDFile=/var/run/dnscrypt.pid
+# 当然，你需要根据你的路径对这里做改动
+ExecStart=/usr/local/bin/dnscrypt-proxy
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+</code></pre></div></div>
+<p>之后，使用 <code class="highlighter-rouge">systemctl start dnscrypt &amp;&amp; systemctl enable dnscrypt</code> 运行服务，如果你不放心，用 <code class="highlighter-rouge">systemctl status dnscrypt</code> 确保他在正常工作。</p>
+
+<p>至此，你已经在53端口搭建了一个正常的 DNS 服务器。</p>
+
+<h2 id="安装-doh-server">安装 DoH Server</h2>
+<p>现在已经有不同语言编写的 DoH Server。我们使用 Go 语言的版本。使用 <code class="highlighter-rouge">yum install -y go</code> 安装 Go 语言。 之后，按照 https://github.com/m13253/dns-over-https 的步骤编译安装DoH Server，如果你使用国外的服务器，这会十分迅速。</p>
+
+<p>当然，事情没这么简单。</p>
+
+<p>在某些内核（我使用Liunx 3.10.0-327.el7.x86_64），使用 <code class="highlighter-rouge">systemctl status doh-server</code> ，你会看到 <code class="highlighter-rouge">(code=exited, status=218/CAPABILITIES)</code> 的错误。我的解决方法比较粗暴：编辑 <code class="highlighter-rouge">/lib/systemd/system/doh-server.service</code> ，注释掉 <code class="highlighter-rouge">AmbientCapabilities=CAP_NET_BIND_SERVICE</code> 这一行，之后重启服务，目前并没有发现什么不良影响。</p>
+
+<p>如果你确保 <code class="highlighter-rouge">doh-server</code> 跑起来了，就可以改一下 <code class="highlighter-rouge">/etc/dns-over-https/doh-server.conf</code> ，将 <code class="highlighter-rouge">upstream</code> 属性改为下面的样子：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>upstream = [
+    "127.0.0.1:53",
+]
+</code></pre></div></div>
+<p>这让 <code class="highlighter-rouge">doh-server</code> 使用我们架设的 <code class="highlighter-rouge">dnscrypt</code> 解析。最后，用 <code class="highlighter-rouge">sudo systemctl restart doh-server</code> 重启服务。</p>
+
+<p>至此，你完成了 <code class="highlighter-rouge">DoH Server</code> 的配置。</p>
+
+<h2 id="nginx">Nginx</h2>
+<p>之后，我们配置最后一部分： <code class="highlighter-rouge">nginx</code> 。如果你还未安装 <code class="highlighter-rouge">nginx</code> ，使用 <code class="highlighter-rouge">yum install -y nginx</code> 安装。</p>
+<h2 id="配置https">配置HTTPS</h2>
+<p>如果你之前已经为 <code class="highlighter-rouge">nginx</code> 配置过 HTTPS ，可以跳过这一部分。如果没有，推荐你使用 <code class="highlighter-rouge">certbot</code> 的一键脚本。依次键入下列命令来安装。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>yum <span class="nt">-y</span> <span class="nb">install </span>yum-utils
+<span class="nv">$ </span>yum-config-manager <span class="nt">--enable</span> rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
+<span class="nv">$ </span>yum <span class="nb">install </span>python2-certbot-nginx
+</code></pre></div></div>
+
+<p>之后，运行 <code class="highlighter-rouge">certbot --nginx</code>， 按指示操作，你便为 <code class="highlighter-rouge">nginx</code> 配置了 HTTPS，访问你的域名，应该能看到 HTTPS 正常工作了。</p>
+
+<h3 id="支线配置-certbot-自动续期">支线：配置 certbot 自动续期</h3>
+<p><code class="highlighter-rouge">certbot</code> 申请的 Let’s Encrypt 证书有效期只有3个月，可以配置自动续期，如果你只是随便玩玩，不做也没关系。</p>
+
+<p>运行 <code class="highlighter-rouge">certbot renew --dry-run</code> ，如果没有错误发生，说明自动续期是正常工作的。（但他并不会立刻续期，因为还没达到续期所要求的期限）。</p>
+
+<p>确认无误后，编辑 <code class="highlighter-rouge">/etc/crontab</code> ，加入下列内容</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 3 <span class="k">*</span>/5 <span class="k">*</span> <span class="k">*</span> certbot renew <span class="nt">--disable-hook-validation</span> <span class="nt">--renew-hook</span> <span class="s2">"systemctl nginx reload"</span>
+</code></pre></div></div>
+<p><code class="highlighter-rouge">certbot</code> 就会将证书保持有效了。</p>
+
+<h2 id="配置-nginx">配置 Nginx</h2>
+<p>如果之前你都没做错，编辑 <code class="highlighter-rouge">/etc/nginx/nginx.conf</code> ，你会在文件底部找到许多注释有 <code class="highlighter-rouge"># managed by Certbot</code> 的部分。我们需要改动的部分并不多。</p>
+
+<p>首先，将</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>listen <span class="o">[</span>::]:443 ssl <span class="nv">ipv6only</span><span class="o">=</span>on<span class="p">;</span> <span class="c"># managed by Certbot</span>
+listen 443 ssl<span class="p">;</span> <span class="c"># managed by Certbot</span>
+</code></pre></div></div>
+<p>改为</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>listen <span class="o">[</span>::]:443 ssl <span class="nv">ipv6only</span><span class="o">=</span>on http2<span class="p">;</span> <span class="c"># managed by Certbot</span>
+listen 443 ssl http2<span class="p">;</span> <span class="c"># managed by Certbot</span>
+</code></pre></div></div>
+<p>之后，在</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>location / <span class="o">{</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+<p>下方插入</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>location /dns-query <span class="o">{</span>
+    proxy_set_header Host <span class="nv">$http_host</span><span class="p">;</span>
+    proxy_set_header X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+    proxy_redirect off<span class="p">;</span>
+    proxy_buffering off<span class="p">;</span>
+    proxy_pass http://dns_backend<span class="p">;</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+<p>最后，在 <code class="highlighter-rouge">server</code> 作用域前，插入代码，使它变成这样：</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">## 插入 upstream 作用域。</span>
+upstream dns_backend <span class="o">{</span>
+         server <span class="o">[</span>::1]:8053<span class="p">;</span>
+         <span class="c"># 当然，如果你的服务器没有 ipv6，在这里需要使用 ipv4 地址，原理是一样的。</span>
+<span class="o">}</span>
+<span class="c">## 以下为原有内容。</span>
+server <span class="o">{</span>
+    server_name www.example.com<span class="p">;</span> <span class="c"># managed by Certbot</span>
+</code></pre></div></div>
+
+<p>之后，使用 <code class="highlighter-rouge">systemctl restart nginx</code> 重启 <code class="highlighter-rouge">nginx</code>，如果一切正常，访问 <code class="highlighter-rouge">www.example.com/dns-query</code> 应该会看到一个错误字符串，长这样</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="s2">"Status"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">"Comment"</span><span class="p">:</span><span class="s2">"Invalid argument value: </span><span class="se">\"</span><span class="s2">ct</span><span class="se">\"</span><span class="s2"> = </span><span class="se">\"\"</span><span class="s2">"</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<p>如果你愿意的话，也可以拒绝这个地址的 <code class="highlighter-rouge">GET</code> 请求，或者把 <code class="highlighter-rouge">GET</code> 重定向。</p>
+
+<p>至此，恭喜你，你已经搭建起了一个 <code class="highlighter-rouge">DoH Server</code>，可以试着使用了。</p>
+
+<h2 id="那么我怎么知道他工作正常呢">那么，我怎么知道他工作正常呢</h2>
+<p>有很多方法，就目前来说，最方便的方式是使用 <code class="highlighter-rouge">Firefox</code> 。你需要在 <code class="highlighter-rouge">about config</code> 中修改这些内容：</p>
+
+<p>network.trr.mode ：  3 ， 使用3将强制使用 DoH 解析，方便测试</p>
+
+<p>network.trr.uri : https://www.example.com/dns-query ， 你搭建的 DoH 服务器地址</p>
+
+<p>network.trr.bootstrapAddress : 123.123.123.123， 你的服务器地址， 说实话我不太知道这个东西意义何在，总之设置成你的服务器地址他是工作的就没错了</p>
+
+<p><strong>如果你知道bootstrapAddress究竟是做什么的，请教教我orz</strong></p>
+
+<p>之后，重启 <code class="highlighter-rouge">Firefox</code> ，尝试打开几个你常用的网站，他应该可以正常解析。</p>
+
+<p>如果你还是不放心，可以打开 <code class="highlighter-rouge">about:networking#dns</code> ，如果 <code class="highlighter-rouge">TRR</code> 那一栏都是 true，就说明你成功了。</p>
+
+<p>恭喜你，你刚刚体验了（虽然目前处于高度实验状态）但是很新的技术，祝你玩的愉快。</p>
+
+<h2 id="后记">后记</h2>
+<p>搭完这个东西玩了 1 个小时后，我重新打开了 CloudFlare 的 CDN。这也意味着之前做的东西都没用了，几个服务也关掉了。所以可能是浪费了时间？然而并不这么觉得。</p>
+
+<p>至少过程非常开心，而且也有学到很多东西，这也就是所谓 “折腾” 的乐趣所在吧。</p>
+
+<h2 id="参考资料">参考资料</h2>
+<p>这些文章为我提供了巨大的帮助，感谢他们：
+https://www.aaflalo.me/2018/10/tutorial-setup-dns-over-https-server/</p>
+
+<p>https://certbot.eff.org/lets-encrypt/centosrhel7-nginx</p>
+
+<p>https://facebookexperimental.github.io/doh-proxy/tutorials/nginx-dohhttpproxy-unbound-centos7.html</p>
+
+<h2 id="转者注也就是我">转者注（也就是我）</h2>
+
+<p>我喜欢这种 Just For Fun 的精神！还有这看起来的确挺好玩儿的，我就转了</p>
+
+      </section>
+      <h2 id="评论区">评论区</h2>
+<div id="disqus_thread" style="font-size: 12px !important;"></div>
+<script>
+  var disqus_config = function () {
+    this.page.url = "https://potion4.github.io/net/2019/02/21/centos-7-dnscript-dns-over-https-dns.html";
+    this.page.identifier = "在 CentOS 7 搭建基于 DNSCrypt 和 Nginx 的 DNS-over-HTTPS";
+  };
+
+  (function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://frame-of-42yeah.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    </div>
+  </body>
+</html>

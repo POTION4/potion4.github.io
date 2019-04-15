@@ -1,5 +1,6 @@
 ---
 title: Frame of 42yeah
+layout: default
 ---
 
 ## Hark, visitor!

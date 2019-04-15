@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="msvalidate.01" content="D1B532AF972A1AB6C3525C904A9AC816" />
+  <meta name="google-site-verification" content="-ujy_zWUIaX-QJ4vdUYfXThyZgr_KqsU0lL611rqsy8" />
+  <title>WebAssembly 续篇</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/app.js"></script>
+</head>
+
+  <body>
+    <div id="contentPane" class="huge-page real main">
+      <h1><a href="/">Frame of 42yeah</a></h1>
+      <h2>WebAssembly 续篇</h2>
+      <hr />
+      <section>
+        <div style="margin-bottom: -25px">
+  <div id='MicrosoftTranslatorWidget' class='Dark' style='color:white;background-color:inherit;height:30px;'></div>
+</div>
+
+<script type='text/javascript'>
+  setTimeout(function(){
+    {var s=document.createElement('script');s.type='text/javascript';s.charset='UTF-8';s.src=((location && location.href && location.href.indexOf('https') == 0)?'https://ssl.microsofttranslator.com':'http://www.microsofttranslator.com')+'/ajax/v3/WidgetV3.ashx?siteData=ueOIGRSKkd965FeEGM5JtQ**&ctf=False&ui=true&settings=Manual&from=';var p=document.getElementsByTagName('head')[0]||document.documentElement;p.insertBefore(s,p.firstChild); }
+  },0);
+</script>
+<script type='text/javascript' src='//www.bing.com/widget/bootstrap.js' data-id='cc2030a35e7345a1940e909993402b13' data-version='1.0b' data-autosnapshot='false' async></script>
+        <p>我们上回说到了 <a href="https://webassembly.org">WebAssembly</a> 世界中的你好世界，然后现在我们知道了，用近乎 native 的速度在浏览器上跑东西的确是可能的。但是你可能同时也发现了一点，那就是：</p>
+
+<p><strong>他默认的界面也太丑了吧。。。</strong></p>
+
+<p><img src="/assets/ugly_interface.png" alt="丑恶的界面" /></p>
+
+<p>总之，我相信在将来的某一天，你会讨厌这个画面的。于是，这就给我们带出来了另外一个问题：<strong>怎么样直接在自己写的页面里面调用 wasm 里头的方法呢？</strong></p>
+
+<p>往回看，一开始编译好的时候，你会发现他生成了三个东西，每个都有自己不同的后缀，分别是：</p>
+<ul>
+  <li><code class="highlighter-rouge">xxx.wasm</code></li>
+  <li><code class="highlighter-rouge">xxx.js</code></li>
+  <li><code class="highlighter-rouge">xxx.html</code></li>
+</ul>
+
+<p>实际上，<code class="highlighter-rouge">xxx.js</code> 跟 <code class="highlighter-rouge">xxx.wasm</code> 才是这个的核心，编译好的 html 只不过是一个壳而已。你甚至可以找到这个壳的位置，他就在 <code class="highlighter-rouge">[emcc安装路径]/[某个版本号]/src/shell.html</code> 中。如果你对这个默认界面不满意，你是可以在编译 html 的时候更换模版的，但我不准备说这个了，上网找找你就知道了。回到正题，也就是<code class="highlighter-rouge">xxx.wasm</code> 跟 <code class="highlighter-rouge">xxx.js</code> 才是核心，对吧？所以也就是说，我完全可以新建一个我自己喜欢的页面，然后引用他们了。实际上这非常简单，而且虽然很简单，但我还是想说一下这个步骤，不然文章看起来挺短的。</p>
+
+<p><em>注意：打后， <code class="highlighter-rouge">xxx</code> 全部用 <code class="highlighter-rouge">main</code> 替换，反正就是指你编译好的那一堆文件。因为 <code class="highlighter-rouge">xxx</code> 看起来太别扭了。 <code class="highlighter-rouge">main</code> 是我上一条推中用的名字，你可以去看看。</em></p>
+
+<p>废话少说，我们要怎么做呢？</p>
+
+<h3 id="新建一个空网页">新建一个空网页</h3>
+<p>新建一个文件，就叫 <code class="highlighter-rouge">index.html</code> 吧。</p>
+
+<h3 id="往里面填你自己喜欢的内容">往里面填你自己喜欢的内容</h3>
+<p>你在里面想加什么都行。</p>
+
+<h3 id="加上这句引用">加上这句引用：</h3>
+<p><code class="highlighter-rouge">&lt;script src="main.js"&gt;&lt;/script&gt;</code></p>
+
+<p>接下来，我们直接打开我们的 <a href="http://127.0.0.1:8080">本地服务器</a> ，就可以看到一个上面是你的内容的网页了。然后进入检索/开发者模式的控制台，你就可以发现 main 会被自动执行，并且 hello world 会输出在你的控制台中。真好！再也不用看那个丑的一批的界面了。</p>
+
+<h3 id="引出了新的问题">引出了新的问题</h3>
+<p>但是，这样又有了新的问题了。既然我都已经可以用自己的 html 了，是不是也就意味着我能够什么时候调用 wasm 的方法都行呢？因为有的时候我们的确不想他一开始就运行一个 main()，输出句话，然后退出。有的时候我们会想等待用户的输入，然后再执行相应的 wasm 代码。</p>
+
+<p>在 emcc 之中，你编译好的方法一般会存在于 <code class="highlighter-rouge">window.Module.asm</code> 当中:
+<img src="/assets/autocomplete.png" alt="补全" /></p>
+
+<p>你可以看到，<code class="highlighter-rouge">malloc</code>, <code class="highlighter-rouge">free</code>, <code class="highlighter-rouge">main</code> 之类的以前面加了条下划线的形式存在于里面。其实你还可以尝试调用一下：
+<code class="highlighter-rouge">_main()</code></p>
+
+<p>你就可以发现，的确是可以执行的。</p>
+
+<h3 id="除了-main-以外的方法呢">除了 main 以外的方法呢？</h3>
+<p>但是，对于 main 以外的， main 又没有调用的函数， <code class="highlighter-rouge">emcc</code> 可不是这样对待的。他会把这些全部当成死代码，然后在编译的时候一并删掉。那怎么保持它们存活呢？其实很简单，这里以一个 <code class="highlighter-rouge">int addOne(int what)</code> 为例：</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">EMSCRIPTEN_KEEPALIVE</span> <span class="nf">addOne</span><span class="p">(</span><span class="kt">int</span> <span class="n">what</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">what</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>可以看得到，唯一不同的就是多了一个 <code class="highlighter-rouge">EMSCRIPTEN_KEEPALIVE</code> 在函数签名那。这个宏可以防止 emcc/em++ 在编译的时候删掉这个函数。你也可以尝试编译一下，然后完了以后打开 <a href="http://127.0.0.1:8080">本地服务器</a> ，并且输入 <code class="highlighter-rouge">_addOne(100)</code>。正常来说，应该会输出 101 的，对吧？也就是说，你现在掌握了一半怎么样在 Javascript 中调用 wasm 的内容了！</p>
+
+<h3 id="一半">一半？</h3>
+<p>为什么说是一半呢？因为有的函数是不能通过这种方式调用的：</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">EMSCRIPTEN_KEEPALIVE</span> <span class="nf">print</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">what</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">what</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>如果通过上面说的那种方式调用，也就是 <code class="highlighter-rouge">_print("hello world")</code> ，是不行的。如果要调用这一类跟指针或者之类的有关的函数，我们必须要用 <code class="highlighter-rouge">cwrap</code>。</p>
+
+<p><code class="highlighter-rouge">cwrap</code> 是什么呢？其实就是 emscripten 给的一个方法，他可以把原生函数包装成 javascript 函数。怎么做到的呢？以上面的 <code class="highlighter-rouge">void EMSCRIPTEN_KEEPALIVE print(char *what)</code> 为例，其实就是这样：</p>
+
+<p><code class="highlighter-rouge">let print = Module.cwrap("print", "void", [ "string" ])</code></p>
+
+<p>不是太难理解，这里有三个参数：第一个是函数的名字，第二个是函数的返回值，第三个是一个列表，里面是每个参数的类型。但是还有一个问题，就是必须在编译的时候告诉编译器启用 cwrap，Javascript 才可以调用 <code class="highlighter-rouge">Module.cwrap</code>，不然 <code class="highlighter-rouge">Module.cwrap</code> 就会是 <code class="highlighter-rouge">undefined</code> 了。这里要加上的参数是（还是以 <code class="highlighter-rouge">main.c</code> 作为文件）：</p>
+
+<p><code class="highlighter-rouge">emcc main.c -o main.html -s EXTRA_EXPORTED_RUNTIME_METHODS="[ 'ccall', 'cwrap' ]"</code></p>
+
+<p>这样一来，编译的时候就会知道要支持 cwrap 了。也就是说，现在我们已经可以自由的在 Javascript 中调用 Wasm 的函数了！</p>
+
+<h3 id="后记">后记</h3>
+<p>有的时候你想在窗体加载好的时候运行某段代码。但如果在这个时候在 <code class="highlighter-rouge">window.onload</code> 之类直接调用的话，他会告诉你他还没准备好所以没办法调用。这个时候的解决方案很简单，因为 <code class="highlighter-rouge">EMScripten</code> 加载好的时候是有自己的事件的，你只要在你的某个 javascript 文件中写一个处理函数就可以了：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 这段代码会在 Wasm 准备好之后马上被调用</span>
+<span class="kd">function</span> <span class="nx">onRuntimeInitialized</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="nx">Module</span><span class="p">[</span><span class="s2">"onRuntimeInitialized"</span><span class="p">]</span> <span class="o">=</span> <span class="nx">onRuntimeInitialized</span>
+</code></pre></div></div>
+
+<p><small>就是这样了。玩得愉快！</small></p>
+
+<h3 id="后后记---errata">后后记 - Errata</h3>
+<p>我也是刚学，我觉得上面的东西可能会存在错误。如果你发现了错误，请及时纠正我。你可以在评论区说我哪错了，直接喷我，或者发到我的 <a href="mailto:potion@live.cn">邮箱</a> 都行。</p>
+
+      </section>
+      <h2 id="评论区">评论区</h2>
+<div id="disqus_thread" style="font-size: 12px !important;"></div>
+<script>
+  var disqus_config = function () {
+    this.page.url = "https://potion4.github.io/webassembly/2019/01/08/wasm-continued.html";
+    this.page.identifier = "WebAssembly 续篇";
+  };
+
+  (function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://frame-of-42yeah.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    </div>
+  </body>
+</html>

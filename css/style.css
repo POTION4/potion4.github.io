@@ -24,13 +24,16 @@ img {
 }
 
 html {
-  font-size: 13px;
   font-family: "notoserif", serif;
   color: rgb(90, 90, 90);
-  line-height: 1.6rem;
 }
 
 @media only screen and (max-width: 839px) {
+  html {
+    font-size: 13px;
+    line-height: 1.6rem;
+  }
+
   body {
     margin: 0;
     padding: 0;
@@ -64,7 +67,6 @@ html {
   .super-title {
     margin-left: -2rem;
     margin-right: -2rem;
-    border-bottom: 1px lightgray solid;
     font-size: 52px;
     padding: -2rem 1rem 1rem;
     line-height: 4.0rem;
@@ -94,11 +96,16 @@ html {
 }
 
 @media only screen and (min-width: 840px) {
+  html {
+    font-size: 14px;
+    line-height: 1.65rem;
+  }
+
   body {
     background: url(/assets/white-waves.png) repeat scroll center top;
     display: flex;
     justify-items: center;
-    padding: 0 10rem;
+    padding: 0 5rem;
     margin-top: 0;
     margin-bottom: 0;
   }
@@ -110,15 +117,7 @@ html {
 
   .super-title {
     font-size: 30px;
-    line-height: 2.5rem;
-  }
-
-  .main-block-mum {
-    width: 50%;
-  }
-
-  .block-mum {
-    width: 25%;
+    line-height: 2.1rem;
   }
 
   .huge-page {
@@ -201,6 +200,26 @@ html {
     float: right;
     content: "";
     color: #ffcf88;
+  }
+}
+
+@media only screen and (min-width: 840px) and (max-width: 1300px) {
+  .main-block-mum {
+    width: 50%;
+  }
+
+  .block-mum {
+    width: 25%;
+  }
+}
+
+@media only screen and (min-width: 1301px) {
+  .main-block-mum {
+    width: 33%;
+  }
+
+  .block-mum {
+    width: 20%;
   }
 }
 

@@ -7,10 +7,13 @@
     </div>
     <div id="contentPane" class="huge-page real main">
       <h1 class="no-pilcrow"><a href="/">Frame of 42yeah</a></h1>
-      <h2 class="no-pilcrow">{{ page.title }}</h2>
-      <hr />
       <section>
+        <div class="simple-border mt-3"></div>
+        <h2>Translate this</h2>
         {% include translator.html %}
+        <div class="simple-border"></div>
+
+        <h2>{{ page.title }}</h2>
         {{ content }}
       </section>
       {% include commentary.html %}

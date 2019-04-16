@@ -104,8 +104,13 @@ html {
   }
 
   .svg-logo {
-    width: 13px;
-    height: 13px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .super-title {
+    font-size: 30px;
+    line-height: 2.5rem;
   }
 
   .main-block-mum {

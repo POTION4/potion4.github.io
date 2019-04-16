@@ -263,6 +263,7 @@ a:active {
 /* Some minihacks about bing */
 #MicrosoftTranslatorWidget {
   width: 100% !important;
+  margin-bottom: 2rem;
 }
 
 #WidgetLauncher {
@@ -270,6 +271,7 @@ a:active {
 }
 
 #LauncherTranslatePhrase {
+  height: 17px;
   margin-right: 10px !important;
   background-color: #555555 !important;
 }

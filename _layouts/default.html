@@ -2,16 +2,21 @@
 <html lang="zh">
   {% include headers.html %}
   <body>
+    <div class="sticky-container">
+      <div class="bg"></div>
+    </div>
     <div id="contentPane" class="real main huge-page">
       <div class="divide">
         <div class="lil-sidebar">
-          <h3 class="text centerify no-pilcrow">
-            <svg width="13" height="13">
-              <rect x="0" y="0" width="13" height="13"
-                    style="fill:transparent; stroke:orange; stroke-width:5; fill-opacity:0.1; stroke-opacity:0.9"></rect>
-            </svg>
-            Frame of 42yeah
-          </h3>
+          <div class="super-title">
+            <h3 class="text centerify no-pilcrow">
+              <svg class="svg-logo" viewBox="0 0 13 13">
+                <rect x="0" y="0" width="13" height="13"
+                      style="fill:transparent; stroke:orange; stroke-width:5; fill-opacity:0.1; stroke-opacity:0.9"></rect>
+              </svg><br />
+              Frame of 42yeah
+            </h3>
+          </div>
           <hr class="mb-1" />
 
           <h3>Hark, visitor!</h3>
@@ -68,7 +73,7 @@
             {% endif %}
             {% assign post = site.posts[i] %}
 
-            <div class="d-flex justify left" style="width: 50%;">
+            <div class="d-flex justify left main-block-mum">
               <div class="block white">
                 <div>
                   <h3 style="color: orange">{{ post.title }}</h3>
@@ -81,7 +86,7 @@
 
             {% endfor %}
 
-            <div class="d-flex justify left" style="width: 50%;">
+            <div class="d-flex justify left main-block-mum">
               <div class="block white">
                 <div>
                   <h1 class="no-pilcrow" style="color: gray">...</h1>

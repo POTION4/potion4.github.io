@@ -31,12 +31,65 @@ html {
 }
 
 @media only screen and (max-width: 799px) {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .sticky-container {
+    position: sticky;
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: -100;
+  }
+
+  .bg {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: url(/assets/white-waves.png);
+    top: 0;
+    left: 0;
+  }
+
   .gnome {
     display: none;
   }
 
   .block-mum {
     width: 100%;
+  }
+
+  .super-title {
+    margin-left: -2rem;
+    margin-right: -2rem;
+    border-bottom: 1px lightgray solid;
+    font-size: 52px;
+    padding: -2rem 1rem 1rem;
+    line-height: 4.0rem;
+  }
+
+  .svg-logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .huge-page {
+    background-color: white;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    padding: 1rem 2rem;
+    border-left: lightgray 1px solid;
+    border-right: lightgray 1px solid;
+  }
+
+  .main-block-mum {
+    width: 100%;
+  }
+  
+  hr {
+    display: none;
   }
 }
 
@@ -48,6 +101,15 @@ html {
     padding: 0 10rem;
     margin-top: 0;
     margin-bottom: 0;
+  }
+
+  .svg-logo {
+    width: 13px;
+    height: 13px;
+  }
+
+  .main-block-mum {
+    width: 50%;
   }
 
   .block-mum {
@@ -122,6 +184,18 @@ html {
 
   hr {
     border-color: lightgray;
+  }
+
+  h1:after, h2:after, h3:after, h4:after, h5:after {
+    float: right;
+    content: "¶";
+    color: #ffcf88;
+  }
+
+  h1.no-pilcrow:after, h2.no-pilcrow:after, h3.no-pilcrow:after, h4.no-pilcrow:after, h5.no-pilcrow:after {
+    float: right;
+    content: "";
+    color: #ffcf88;
   }
 }
 
@@ -258,18 +332,6 @@ a:active {
 .block.white {
   border: lightgray solid 1px;
   background-color: white;
-}
-
-h1:after, h2:after, h3:after, h4:after, h5:after {
-  float: right;
-  content: "¶";
-  color: #ffcf88;
-}
-
-h1.no-pilcrow:after, h2.no-pilcrow:after, h3.no-pilcrow:after, h4.no-pilcrow:after, h5.no-pilcrow:after {
-  float: right;
-  content: "";
-  color: #ffcf88;
 }
 
 /* Those are highlight colors */

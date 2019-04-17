@@ -202,7 +202,7 @@ categories: [ net ]
 
 ---
 
-## :out-of-range，:in-range
+## :out-of-range, :in-range
 
 `:out-of-range` 会选择一切里头的值超出了最大允许值/低于最小允许值的 `<input>` 。
 

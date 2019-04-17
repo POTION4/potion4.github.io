@@ -55,6 +55,25 @@ td {
   border-left: lightgray 1px solid;
 }
 
+hr {
+  border: 0;
+  border-bottom: 1px lightgray solid;
+  margin: 0 -2rem;
+}
+
+strong, b {
+  border-bottom: orange 3px dashed;
+}
+
+input {
+  border: 0;
+  padding: 0.3rem;
+  border-bottom: 1px orange dotted;
+  color: rgb(90, 90, 90);
+  font-family: "notoserif", serif;
+  font-size: 13px;
+}
+
 @media only screen and (max-width: 839px) {
   html {
     font-size: 13px;
@@ -115,10 +134,6 @@ td {
 
   .main-block-mum {
     width: 100%;
-  }
-  
-  hr {
-    display: none;
   }
 }
 
@@ -211,10 +226,6 @@ td {
   ul {
     font-size: 12px;
     padding-inline-start: 10px;
-  }
-
-  hr {
-    border-color: lightgray;
   }
 
   h1:after, h2:after, h3:after, h4:after, h5:after {
@@ -395,6 +406,10 @@ a:active {
 
 .mt-3 {
   margin-top: 3rem;
+}
+
+.spam-the-line {
+  width: 100%;
 }
 
 /* Those are highlight colors */

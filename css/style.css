@@ -46,6 +46,7 @@ th {
 }
 
 th, td {
+  padding: 0.3rem;
   margin: -1px -1px;
 }
 

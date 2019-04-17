@@ -245,8 +245,8 @@ a:hover {
 }
 
 a:active {
-  background-color: #ee8c00;
-  border-bottom: #ee8c00 solid 3px;
+  background-color: #e79500;
+  border-bottom: #e79500 solid 3px;
   /*vertical-align: -3px;*/
   color: white;
   /*font-size: 12px;*/

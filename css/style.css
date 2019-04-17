@@ -143,6 +143,7 @@ input {
   .toc-table > table {
     width: 100%;
     padding: 0.1rem;
+    margin-top: 2rem;
   }
 
   .toc > a {
@@ -169,6 +170,17 @@ input {
     background-color: transparent;
     border-bottom: #e79500 dotted 1px;
   }
+
+  th.toc {
+    text-align: left;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: rgb(90, 90, 90);
+    line-height: 1.6rem;
+    padding-bottom: 1rem;
+  }
+
+
 }
 
 @media only screen and (min-width: 840px) {

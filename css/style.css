@@ -28,6 +28,34 @@ html {
   color: rgb(90, 90, 90);
 }
 
+li {
+
+}
+
+table {
+  border-spacing: 0;
+}
+
+th {
+  font-weight: bold;
+  color: orange;
+  border-top: #ffc967 1px solid;
+  border-bottom: #ffc967 1px solid;
+  border-left: #ffc967 1px solid;
+  text-align: center;
+}
+
+th, td {
+  padding: 0.4rem;
+
+  margin: -1px -1px;
+}
+
+td {
+  border-bottom: lightgray 1px solid;
+  border-left: lightgray 1px solid;
+}
+
 @media only screen and (max-width: 839px) {
   html {
     font-size: 13px;

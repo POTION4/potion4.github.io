@@ -201,6 +201,10 @@ input {
     margin-bottom: 0;
   }
 
+  .main-block-mum {
+    width: 100%;
+  }
+
   .svg-logo {
     width: 100px;
     height: 100px;
@@ -265,13 +269,6 @@ input {
     margin-bottom: 1rem;
   }
 
-  .lil-sidebar {
-    max-width: 20%;
-    padding-right: 2rem;
-    margin-right: 1rem;
-    border-right: lightgray solid 1px;
-  }
-
   ul {
     font-size: 12px;
     padding-inline-start: 20px;
@@ -325,17 +322,46 @@ input {
   }
 }
 
-@media only screen and (min-width: 840px) and (max-width: 1300px) {
+@media only screen and (max-width: 900px) {
+  .lil-sidebar {
+    max-width: 30%;
+    padding-right: 2rem;
+    margin-right: 1rem;
+    border-right: lightgray solid 1px;
+  }
+
+  .main-block-mum {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 901px) {
+  .lil-sidebar {
+    max-width: 25%;
+    padding-right: 2rem;
+    margin-right: 1rem;
+    border-right: lightgray solid 1px;
+  }
+
   .main-block-mum {
     width: 50%;
   }
+}
 
+@media only screen and (min-width: 840px) and (max-width: 1300px) {
   .block-mum {
     width: 25%;
   }
 }
 
 @media only screen and (min-width: 1301px) {
+  .lil-sidebar {
+    max-width: 20%;
+    padding-right: 2rem;
+    margin-right: 1rem;
+    border-right: lightgray solid 1px;
+  }
+
   .main-block-mum {
     width: 33%;
   }
@@ -426,6 +452,36 @@ a:active {
   display: none !important;
 }
 
+.outline {
+  border: darkorange solid 1px;
+  color: darkorange;
+  background-color: transparent;
+  text-align: center;
+  margin-right: 3px;
+  margin-bottom: 2px;
+  font-weight: bolder;
+}
+
+.outline:hover {
+  border: darkorange solid 1px;
+  color: white;
+  background-color: darkorange;
+  text-align: center;
+  margin-right: 3px;
+  margin-bottom: 2px;
+  font-weight: bolder;
+}
+
+.outline:active {
+  border: darkorange solid 1px;
+  color: white;
+  text-align: center;
+  margin-right: 3px;
+  margin-bottom: 2px;
+  font-weight: bolder;
+  background-color: #aa6900;
+}
+
 .big-btn {
   text-align: center;
   display: block;
@@ -464,12 +520,17 @@ a:active {
 
 .block {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
 
   width: 100%;
-  padding: 1rem;
+  padding: 1.5rem;
   margin: -1px;
+}
+
+.fill-width {
+  width: 100%;
 }
 
 .block.orange {
@@ -477,7 +538,7 @@ a:active {
   color: white;
 }
 
-.block.white {
+.block.white, .center-block.white {
   border: lightgray solid 1px;
   background-color: white;
 }
@@ -500,6 +561,16 @@ a:active {
   width: 100%;
   border: 0;
   padding: 1px;
+}
+
+.center-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  padding: 1.5rem;
+  margin: -1px;
 }
 
 /* Those are highlight colors */

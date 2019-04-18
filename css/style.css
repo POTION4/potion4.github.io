@@ -526,6 +526,12 @@ a:active {
   background-color: #aa6900;
 }
 
+.big-btn.half {
+  width: 48% !important;
+  margin: 1px;
+  padding: 0;
+}
+
 .d-flex {
   display: flex;
 }
@@ -587,6 +593,12 @@ a:active {
   width: 100%;
   padding: 1.5rem;
   margin: -1px;
+}
+
+.friend-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
 }
 
 /* Those are highlight colors */

@@ -16,6 +16,8 @@ categories: [ game ]
 
 Assassin's Creed Unity《刺客教條：大革命》是以18世紀末法國大革命時期作背期的一款遊戲，玩家可以在裡面探索昔日的法國面貌，遊歷多個名勝古蹟，包括巴黎聖母院。
 
+### 领取地址: [Ubisoft](https://register.ubisoft.com/acu-notredame-giveaway/en-US)
+
 ---
 
 ## 转者注（也就是我）

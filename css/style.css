@@ -142,7 +142,10 @@ input {
 
   .toc-table > table {
     width: 100%;
-    padding: 0.1rem;
+    padding-right: 2rem;
+    padding-left: 0;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
     margin-top: 2rem;
   }
 

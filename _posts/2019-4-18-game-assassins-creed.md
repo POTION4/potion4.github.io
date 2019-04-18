@@ -4,6 +4,8 @@ layout: post
 categories: [ game ]
 ---
 
+![刺客信条！大革命！](/assets/ubisoft.assassins.creed.unity.jpg)
+
 這始於讓人喜不起來......
 
 以下消息转自 [脆饼的游戏记录](https://www.gamejilu.com/giveaways/ubisoft_assassins-creed-unity_free/) 。

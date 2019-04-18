@@ -183,7 +183,12 @@ input {
     padding-bottom: 1rem;
   }
 
-
+  .lil-sidebar {
+    max-width: 100% !important;
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+    border-right: 0 !important;
+  }
 }
 
 @media only screen and (min-width: 840px) {

@@ -121,6 +121,7 @@ a:active {
   }
 
   body {
+    background: url(/assets/white-waves.png) repeat scroll center top;
     margin: 0;
     padding: 0;
   }

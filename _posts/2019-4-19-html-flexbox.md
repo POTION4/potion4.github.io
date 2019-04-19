@@ -43,6 +43,10 @@ HTML 中的 Flexbox ，是一个贼强大，同时又有点儿恶心的东西。
   <img src="/assets/function.png" class="little-pic">
   <img src="/assets/hmm.png" class="little-pic">
   <img src="/assets/horray.png" class="little-pic">
+  <img src="/assets/plot.png" class="little-pic">
+  <img src="/assets/punch1.png" class="little-pic">
+  <img src="/assets/shitty.png" class="little-pic">
+  <img src="/assets/starfort.jpg" class="little-pic">
 </div>
 
 ---

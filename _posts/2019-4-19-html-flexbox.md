@@ -89,7 +89,7 @@ HTML 中的 Flexbox ，是一个贼强大，同时又有点儿恶心的东西。
   let flexbox = document.getElementById("flexbox");
   let flexButton = document.getElementById("flexButton");
   let overflowButton = document.getElementById("overflowButton");
-  let justifyButton = documen```````____```````t.getElementById("justifyButton");
+  let justifyButton = document.getElementById("justifyButton");
   let alignButton = document.getElementById("alignButton");
   let flexWrapDirButton = document.getElementById("flexWrapDirButton");
   let justifies = [

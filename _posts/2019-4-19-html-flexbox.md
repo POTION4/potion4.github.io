@@ -37,7 +37,7 @@ HTML 中的 Flexbox ，是一个贼强大，同时又有点儿恶心的东西。
 <div class="flex overflow" id="flexbox">
   <img src="/assets/comeon.png" class="little-pic">
   <img src="/assets/cheating.png" class="little-pic">
-  <img src="/assets/fire.png" class="little-pic">
+  <img src="/assets/fire.png" class="li````ttle-pic">
   <img src="/assets/frame.png" class="little-pic">
   <img src="/assets/ftk.jpeg" class="little-pic">
   <img src="/assets/function.png" class="little-pic">

@@ -4,6 +4,7 @@ sidebar: false
 comments: true
 layout: default
 highlighter: rouge
+markdown: kramdown
 
 url: "https://potion4.github.io"
 

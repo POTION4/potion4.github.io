@@ -8,7 +8,7 @@ categories: [ cg, net ]
 
 所以，我们就来到了 [THREE.js](http://threejs.org) 的世界了！THREE.js 缤纷、多彩、绚丽。他把一切的数学基础都搞定了并且把实现的细节隐藏了起来。包括但不限于光照、摄像头、诸如此类。下面是一些用 THREE.js 做出来的东西：
 
-![看到 Transmission 了嘛？](/assets/threejs.org)
+![看到 Transmission 了嘛？](/assets/threejs.png)
 
 所以在这个帖子里，咱们就来学一些特别基础的内容吧！就从渲染一个立方体开始！
 

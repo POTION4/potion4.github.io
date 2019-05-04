@@ -75,6 +75,7 @@ render();
 
 <div id="canvasHolder"></div>
 
+<script src="https://threejs.org/build/three.min.js"></script>
 <script>
 (function() {
     let canvas;

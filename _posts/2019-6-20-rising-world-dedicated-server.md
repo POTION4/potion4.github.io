@@ -36,9 +36,9 @@ Rising World 的版本其实一直在更新，有人看到这个东西的时候�
 
 然后就开始启动服务器了！启动的方法有很多种：
 
-- {% highlight shell %}java -jar -nobatch server.jar{% endhighlight %}
-- (要装 screen) {% highlight shell %}sh linux_startscript.sh{% endhighlight %}
-- (要 screen) {% highlight shell %}sh linux_screen.sh{% endhighlight %}
+- `java -jar -nobatch server.jar`
+- `sh linux_startscript.sh`
+- `sh linux_screen.sh`
 
 成吧，仨种……
 
@@ -72,7 +72,9 @@ ln -s ${HOME}/steamcmd/linux64/steamclient.so
 防火墙。默认情况下，服务器端口是开在 `4255` 的，但是他不只需要这个端口。根据官网原话：
 
 > Ports
+
 > The server port can be set in the server.properties file. By default, the server uses port 4255. The http query port is always serverport-1 TCP (so when using the default server port, it's 4254).
+
 > Please keep in mind that the server also requires the port range serverport to serverport+4 TCP and UDP (both protocols are required), so when using default server port, the server requires ports 4254, 4255, 4256, 4257, 4258 and 4259 TCP and UDP.
 
 所以说，端口要一直开，从 4254 开到 4259，TCP/UDP 的都要开。所以一系列的 iptables/firewall-cmd 就行了……吧？反正我行了。

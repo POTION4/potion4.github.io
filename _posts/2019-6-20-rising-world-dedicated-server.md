@@ -4,7 +4,7 @@ title: Rising World 架设专用服务器
 categories: [ game ]
 ---
 
-![/assets/rising_world.jpg]
+![Rising World!](/assets/rising_world.jpg)
 
 ## Rising World
 
@@ -19,9 +19,11 @@ Rising World 是一个自由度很高的沙盒游戏，跟 [Minecraft](https://m
 Rising World 的版本其实一直在更新，有人看到这个东西的时候我也怕已经过期了。但是无论如何，按照惯例，[这里是服务器下载的地址](/assets/RisingWorldDedicatedServer.zip)。假如版本实在是太低的话，你也可以在 Steam 里面下载：
 
 - 打开 Steam 工具：
-  ![工具](/assets/tools.png)
+
+![工具](/assets/tools.png)
 - 稍微搜索一哈：
-  ![找](/assets/server_search.png)
+
+![找](/assets/server_search.png)
 - 下载
 - 传到你的服务器上去
 - 解压

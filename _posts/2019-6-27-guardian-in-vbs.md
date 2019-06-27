@@ -27,7 +27,7 @@ Next
 Word.Quit
 ```
 
-那么然后就有人要说了（譬如我），因为没有装 Word 的机子里咋办？嗯，这就是我用的方法了，来自 [Stack Overflow 的另外一个角落](https://stackoverflow.com/questions/44081448/viewing-running-processes-with-vbscript): 用 tasklist 和管道。
+那么然后就有人要说了（譬如我），因为没有装 Word 的机子里咋办？嗯，这就是我用的方法了，来自 [Stack Overflow 的另外一个角落](https://stackoverflow.com/questions/44081448/viewing-running-processes-with-vbscript): 用 tasklist 和输出重定向。
 
 ```vb
 Dim ProTFPath, ProTF, StrPrInfo, StrPrInfoA, PrInfo

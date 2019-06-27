@@ -4,8 +4,6 @@ title: 用 vbs 写进程守卫
 categories: [ meta ]
 ---
 
-## 进程守卫
-
 其实到现在，我也不知道这个应该叫什么好……我一开始想叫他守卫进程的，但想起这个东西是 daemon ，而我要写的并不是 daemon……
 
 我要写的东西是一个进程的观察进程，或者叫进程守卫？我也不清楚。他的唯一作用就是，当发现一个进程没响应的时候，就重启他。对，我就是有这么奇葩的需求……那我们马上开始吧！
@@ -20,7 +18,7 @@ categories: [ meta ]
 
 很遗憾，VBScript 本身并没有这个本事……但是靠 Word ，一切皆有可能！来源于 [Stack Overflow](https://stackoverflow.com/questions/191206/how-to-get-list-of-running-applications-using-powershell-or-vbscript)：
 
-```vbs
+```vb
 Set Word = CreateObject("Word.Application")
 Set Tasks = Word.Tasks
 For Each Task in Tasks
@@ -31,7 +29,7 @@ Word.Quit
 
 那么然后就有人要说了（譬如我），因为没有装 Word 的机子里咋办？嗯，这就是我用的方法了，来自 [Stack Overflow 的另外一个角落](https://stackoverflow.com/questions/44081448/viewing-running-processes-with-vbscript): 用 tasklist 和管道。
 
-```vbs
+```vb
 Dim ProTFPath, ProTF, StrPrInfo, StrPrInfoA, PrInfo
 
 Set WshShell = WScript.CreateObject("Wscript.Shell")
@@ -76,7 +74,7 @@ ProTF.Close
 
 原因很简单，就是因为导出来的 PROCESSES.TXT 的第一行是完全空行……所以在 Split 的时候就分割出了完全空的一行。又由于第一行的那个任务一般都不是我们要监视的任务（是吗？），所以偷懒只要加个 `If` 判断一下就好了：
 
-```vbs
+```vb
     If UBound(ProcessName) = -1 Then
         ' 第一行……
     Else
@@ -90,7 +88,7 @@ ProTF.Close
 
 要改成这样也不难。还记得我上面说过第六行是进程的状态不……只要判断一下那个状态是不是 Running 就行了。
 
-```vbs
+```vb
     For I = 0 To UBound(PrInfo)
         InfoList = Split(PrInfo(I), VbCrLf)
         ProcessName = Split(InfoList(0), " ")
@@ -111,7 +109,7 @@ ProTF.Close
 
 最后，我们只需要加一个死循环在外面，然后过一秒检查一次就可以了。voila!
 
-```vbs
+```vb
 Dim ProTFPath, ProTF, StrPrInfo, StrPrInfoA, PrInfo
 
 Set WshShell = WScript.CreateObject("Wscript.Shell")

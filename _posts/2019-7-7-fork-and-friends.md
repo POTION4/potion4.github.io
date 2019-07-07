@@ -118,6 +118,51 @@ fork()!
 
 进行这两步后，我们就拥有了一片共享的内存啦！然后我们对他干啥都行啦！只要别在最后别忘了 `shmdt` 掉就行了，不然的话下一次会开不了的。
 
+## IPC 信号量！
+
+接下来，我们即将迎来另外一个东西：IPC 信号量！其实还有更加简单的信号量，不过我们就是要看这个。直接上代码：
+
+注意，这里的代码极其简陋，并且没有任何错误处理（和判断）。主要是我有点赶时间。不好意思呀！
+
+```c
+#include <sys/ipc.h>
+#include <sys/sem.h>
+#include <sys/types.h>
+// ... 以及各种 include
+
+#define SEMKEY 0x1337
+
+void P(int semid);
+void V(int semid);
+
+// ... {
+    // 创建信号量
+    int semid = semget(SEMKEY, 1, 0644 | O_CREAT);
+    // 给信号量赋初值
+    int initialVal = 1;
+    semctl(semid, 0, SETVAL, initialVal);
+
+    int pid = fork();
+    // 自己玩 P/V 吧！
+// }
+
+void P(int semid) {
+    struct sembuf p;
+    p.sem_num = 0;
+    p.sem_op = -1;
+    p.sem_flg = 0;
+    semop(semid, &p, 1);
+}
+
+void V(int semid) {
+    struct sembuf v;
+    v.sem_num = 0;
+    v.sem_op = 1;
+    v.sem_flg = 0;
+    semop(semid, &v, 1);
+}
+```
+
 ## 就先这样啦！
 
 啊……操作系统啊…… 还有计算机组成原理考试…… 大家祝我好运！感觉今晚有点儿语无伦次的，之后有空咱再补上吧，虽然我感觉大概率不会了。。。byebye! 

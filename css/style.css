@@ -83,6 +83,16 @@ input {
   font-size: 13px;
 }
 
+textarea {
+  width: 100%;
+  border: 0;
+  padding: 0.3rem;
+  border-bottom: 1px orange dotted;
+  color: rgb(90, 90, 90);
+  font-family: "notoserif", serif;
+  font-size: 13px;
+}
+
 pre {
   overflow-x: auto;
 }
